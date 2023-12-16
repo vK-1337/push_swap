@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vda-conc <vda-conc@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vk <vk@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/07 08:40:29 by vda-conc          #+#    #+#             */
-/*   Updated: 2023/12/16 05:40:52 by vda-conc         ###   ########.fr       */
+/*   Updated: 2023/12/16 15:55:08 by vk               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ void	ft_sort(t_list **list_a)
 	list_b = malloc(sizeof(t_list *));
 	ft_swap_pb(list_a, list_b);
 	ft_swap_pb(list_a, list_b);
+  // Tant qu'il reste + de 3 noeuds dans la pile A il faut placer les noeuds dans la pile B avec leur target;
+
 }
 
 int ft_best_pos(int actual_target_pos, int potential_target_pos, t_list **list_b)
@@ -29,6 +31,7 @@ int ft_best_pos(int actual_target_pos, int potential_target_pos, t_list **list_b
   int actual_tar_moves;
   int potential_tar_moves;
 
+  actual_tar_moves = 0;
   list_size = ft_lstsize(*list_b);
   if (actual_target_pos < list_size / 2)
     actual_tar_moves = actual_target_pos - 1;
@@ -44,7 +47,7 @@ int ft_best_pos(int actual_target_pos, int potential_target_pos, t_list **list_b
     return (potential_target_pos);
 }
 
-int	ft_get_tar_pos(t_list *a_list_node, t_list **list_b)
+int	ft_get_target(t_list *a_list_node, t_list **list_b) // A AMELIORER
 {
 	int		target_position;
 	int		content_diff;
@@ -84,79 +87,28 @@ int	ft_content_diff(t_list *a_list_node, t_list *b_list_node)
 		content_diff *= -1;
 	return (content_diff);
 }
-int ft_cost(int a_node_pos, int b_node_pos, t_list **list_a, t_list **list_b)
-{
-  int i;
 
-  if(a_node_pos > ft_lstsize(list_a) / 2 && a_node_pos > ft_lstsize(list_b) / 2)
-  {
-    while (a_node_pos <= ft_lstsize(list_a) && b_node_pos <= ft_lstsize(list_b))
-    {
-      a_node_pos++;
-      b_node_pos++;
-      i++;
-    }
-  }
-  if(a_node_pos < ft_lstsize(list_a) / 2 && a_node_pos < ft_lstsize(list_b) / 2)
-  {
-    while (a_node_pos >= 1 && b_node_pos >= 1)
-    {
-      a_node_pos--;
-      b_node_pos--;
-      i++;
-    }
-  }
-  if(a_node_pos > ft_lstsize(list_a) / 2)
-  {
-    while (a_node_pos <= ft_lstsize(list_a))
-    {
-      a_node_pos++;
-      i++;
-    }
-  }
-  if(a_node_pos < ft_lstsize(list_a) / 2)
-  {
-    while (a_node_pos >= ft_lstsize(list_a))
-    {
-      a_node_pos--;
-      i++;
-    }
-  }
-  if(b_node_pos > ft_lstsize(list_b) / 2)
-  {
-    while (b_node_pos <= ft_lstsize(list_b))
-    {
-      b_node_pos++;
-      i++;
-    }
-  }
-  if(b_node_pos < ft_lstsize(list_b) / 2)
-  {
-    while (b_node_pos >= ft_lstsize(list_b))
-    {
-      b_node_pos--;
-      i++;
-    }
-  }
-  return (i);
-}
 int	ft_cheapest_moves(t_list **list_a, t_list **list_b)
 {
-	int	target_position;
   int i;
-  t_list *curr_a;
   int cost;
+	int	target_position;
   int pos_to_insert;
+  t_list *curr_a;
 
   curr_a = *list_a;
 
   i = 1;
-  target_position = ft_get_tar_pos(curr_a, list_b);
+  target_position = ft_get_target(curr_a, list_b);
   cost = ft_cost(i, target_position, list_a, list_b);
   while (curr_a != NULL)
   {
-    target_position = ft_get_tar_pos(curr_a, list_b);
-    cost = ft_cost(i, target_position, list_a, list_b);
+    target_position = ft_get_target(curr_a, list_b);
+    if (ft_cost(i, target_position, list_a, list_b) < cost)
+      {
+        pos_to_insert = i;
+        cost = ft_cost(i, target_position, list_a, list_b);
+      }
     i++;
     curr_a = curr_a->next;
   }

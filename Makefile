@@ -3,14 +3,15 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: vda-conc <vda-conc@student.42.fr>          +#+  +:+       +#+         #
+#    By: vk <vk@student.42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/07 08:40:39 by vda-conc          #+#    #+#              #
-#    Updated: 2023/12/16 00:21:55 by vda-conc         ###   ########.fr        #
+#    Updated: 2023/12/16 16:21:03 by vk               ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 SRC = sort.c \
+			costs.c \
 			parsing.c \
 			push_swap.c \
 			./lst/lst_utils.c \
