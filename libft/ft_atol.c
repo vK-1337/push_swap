@@ -1,26 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstnew.c                                        :+:      :+:    :+:   */
+/*   ft_atol.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vda-conc <vda-conc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/12 22:13:42 by vk                #+#    #+#             */
-/*   Updated: 2023/12/15 20:05:57 by vda-conc         ###   ########.fr       */
+/*   Created: 2023/10/24 19:31:55 by vk                #+#    #+#             */
+/*   Updated: 2023/12/15 20:06:51 by vda-conc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-t_list	*ft_lstnew(int content)
+long	ft_atol(const char *str)
 {
-	t_list	*new_node;
+	int		i;
+	long	j;
+	int		sign;
 
-	new_node = malloc(sizeof(t_list));
-	if (!new_node)
-		return (NULL);
-	new_node->content = content;
-	new_node->next = NULL;
-	new_node->prev = NULL;
-	return (new_node);
+	i = 0;
+	while ((str[i] >= 9 && str[i] <= 13) || str[i] == 32)
+	{
+		i++;
+	}
+	sign = 1;
+	if (str[i] == '+' || str[i] == '-')
+	{
+		if (str[i] == '-')
+			sign *= -1;
+		i++;
+	}
+	j = 0;
+	while (str[i] >= 48 && str[i] <= 57)
+	{
+		j = j * 10 + (str[i] - '0');
+		i++;
+	}
+	return (j * sign);
 }

@@ -6,19 +6,25 @@
 #    By: vda-conc <vda-conc@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/07 08:40:39 by vda-conc          #+#    #+#              #
-#    Updated: 2023/12/09 19:24:46 by vda-conc         ###   ########.fr        #
+#    Updated: 2023/12/16 00:21:55 by vda-conc         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRC = push_swap.c
+SRC = sort.c \
+			parsing.c \
+			push_swap.c \
+			./lst/lst_utils.c \
+			./lst/lst_utils_two.c \
+			./lst/lst_utils_three.c \
+			./lst/lst_utils_four.c \
 
-OBJS = $(SRC:.c=.o) 
+OBJS = $(SRC:.c=.o) ./libft/libft.a
 
 SORT_OBJS = $(SORT:.c=.o)
 
 NAME = push_swap
 
-CFLAGS = -Wall -Werror -Wextra
+CFLAGS = -Wall -Werror -Wextra -g3
 LDFLAGS = -L./libft -lft
 
 # colors
@@ -29,7 +35,7 @@ YELLOW = \e[0;93m
 ./libft/libft.a: FORCE
 	@$(MAKE) -C ./libft
 
-$(NAME): $(OBJS) ./libft/libft.a
+$(NAME): $(OBJS)
 	$(CC) $(CFLAGS) $(LDFLAGS) $(OBJS) -o $(NAME)
 	@echo "	 			+---------------------+\n\
 					|  $(YELLOW)  PUSH_SWAP $(GREEN)[OK]$(NC)   |\n\

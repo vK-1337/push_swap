@@ -1,4 +1,4 @@
-SRC = 	ft_atoi.c \
+SRC = 	ft_atol.c \
 		ft_bzero.c \
 		ft_calloc.c \
 		ft_isalnum.c \
@@ -68,7 +68,7 @@ sort: $(OBJS) $(SORT_OBJS)
 bonus: $(OBJS) $(BONUS_OBJS)
 	ar -rcs $(NAME) $(OBJS) $(BONUS_OBJS)
 
-so: 
+so:
 	$(CC) -nostartfiles -fPIC $(CFLAGS) $(SRC)
 	$(CC) -nostartfiles -shared -o libft.so $(OBJS) $(BONUS_OBJS)
 

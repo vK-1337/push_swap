@@ -1,26 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstnew.c                                        :+:      :+:    :+:   */
+/*   lst_utils_four.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vda-conc <vda-conc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/12 22:13:42 by vk                #+#    #+#             */
-/*   Updated: 2023/12/15 20:05:57 by vda-conc         ###   ########.fr       */
+/*   Created: 2023/12/15 23:48:09 by vda-conc          #+#    #+#             */
+/*   Updated: 2023/12/16 00:24:44 by vda-conc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../push_swap.h"
 
-t_list	*ft_lstnew(int content)
+int	ft_find_lst_max(t_list **list)
 {
-	t_list	*new_node;
+	int		max;
+	int		i;
+	int		max_position;
+	t_list	*curr;
 
-	new_node = malloc(sizeof(t_list));
-	if (!new_node)
-		return (NULL);
-	new_node->content = content;
-	new_node->next = NULL;
-	new_node->prev = NULL;
-	return (new_node);
+	i = 1;
+	curr = *list;
+	max = curr->content;
+	max_position = 1;
+	while (curr->next != NULL)
+	{
+		if (curr->content > max)
+		{
+			max_position = i;
+			max = curr->content;
+		}
+    curr = curr->next;
+		i++;
+	}
+	if (curr->content > max)
+		max_position = i + 1;
+	return (max_position);
 }

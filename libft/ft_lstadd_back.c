@@ -1,16 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstadd_back_bonus.c                             :+:      :+:    :+:   */
+/*   ft_lstadd_back.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vda-conc <vda-conc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/12 23:26:06 by vk                #+#    #+#             */
-/*   Updated: 2023/11/14 15:52:06 by vda-conc         ###   ########.fr       */
+/*   Updated: 2023/12/15 21:07:40 by vda-conc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <stdio.h>
 
 void	ft_lstadd_back(t_list **lst, t_list *new)
 {
@@ -23,7 +24,12 @@ void	ft_lstadd_back(t_list **lst, t_list *new)
 	{
 		tmp = ft_lstlast((*lst));
 		tmp->next = new;
+		new->prev = tmp;
 	}
 	else
+	{
+		new->next = NULL;
+		new->prev = NULL;
 		*lst = new;
+	}
 }
