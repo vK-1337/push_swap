@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vda-conc <vda-conc@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vk <vk@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/07 08:40:29 by vda-conc          #+#    #+#             */
-/*   Updated: 2023/12/17 20:10:49 by vda-conc         ###   ########.fr       */
+/*   Updated: 2023/12/17 23:56:12 by vk               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,83 @@
 
 void ft_execute_moves(t_list **list_a, t_list **list_b, t_target_info positions)
 {
-  // Creer ft_multiple_moves(int *a_node_pos, int *b_node_pos, t_list **list_a, t_list **list_b);
-  // Creer ft_move_a(int *a_node_pos, t_list **list_a);
-  // Creer ft_move_b(int *b_node_pos, t_list **list_b);
+  printf("Je rentre ici\n");
+  ft_multiple_moves(&positions.pos_to_insert, &positions.target_pos, list_a, list_b);
+  ft_move_a(&positions.pos_to_insert, list_a);
+  ft_move_b(&positions.target_pos, list_b);
+  ft_swap_pb(list_a, list_b);
+}
+void ft_move_a(int *a_node_pos, t_list **list_a)
+{
+  int a_size;
+
+  a_size = ft_lstsize(*list_a);
+  if (*a_node_pos > a_size / 2)
+	{
+		while (*a_node_pos <= a_size)
+		{
+      ft_swap_rra(list_a);
+			(*a_node_pos)++;
+    }
+	}
+	else if (*a_node_pos < a_size / 2)
+	{
+		while (*a_node_pos > 1)
+		{
+      ft_swap_ra(list_a);
+			(*a_node_pos)--;
+		}
+	}
+}
+
+void ft_move_b(int *b_node_pos, t_list **list_b)
+{
+  int b_size;
+
+  b_size = ft_lstsize(*list_b);
+  if (*b_node_pos > b_size / 2)
+	{
+		while (*b_node_pos <= b_size)
+		{
+      ft_swap_rrb(list_b);
+			(*b_node_pos)++;
+    }
+	}
+	else if (*b_node_pos < b_size / 2)
+	{
+		while (*b_node_pos > 1)
+		{
+      ft_swap_rb(list_b);
+			(*b_node_pos)--;
+		}
+	}
+}
+
+void ft_multiple_moves(int *a_node_pos, int *b_node_pos, t_list **list_a, t_list **list_b)
+{
+  int a_size;
+  int b_size;
+
+  a_size = ft_lstsize(*list_a);
+  b_size = ft_lstsize(*list_b);
+	if ((*a_node_pos > a_size / 2) && (*a_node_pos > b_size / 2))
+	{
+		while ((*a_node_pos <= a_size) && (*b_node_pos <= b_size))
+		{
+      ft_swap_rrr(list_a, list_b);
+			(*a_node_pos)++;
+			(*b_node_pos)++;
+		}
+	}
+	else if ((*a_node_pos <= a_size / 2) && (*b_node_pos <= b_size / 2))
+	{
+		while (*a_node_pos > 1 && *b_node_pos > 1)
+		{
+      ft_swap_rr(list_a, list_b);
+			(*a_node_pos)--;
+			(*b_node_pos)--;
+		}
+	}
 }
 
 void	ft_sort(t_list **list_a)
@@ -34,8 +108,8 @@ void	ft_sort(t_list **list_a)
 		positions = ft_cheapest_moves(list_a, list_b);
 		ft_execute_moves(list_a, list_b, positions);
 	}
-	ft_three_sort_a(*list_a);
-	while (ft_lstsize(list_b) > 0)
+	ft_three_sort_a(list_a);
+	while (ft_lstsize(*list_b) > 0)
 	{
 		positions = ft_cheapest_moves(list_b, list_a);
 		ft_execute_moves(list_b, list_a, positions);

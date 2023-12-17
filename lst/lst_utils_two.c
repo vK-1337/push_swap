@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lst_utils_two.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vda-conc <vda-conc@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vk <vk@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/15 18:59:43 by vda-conc          #+#    #+#             */
-/*   Updated: 2023/12/17 19:51:56 by vda-conc         ###   ########.fr       */
+/*   Updated: 2023/12/17 23:46:44 by vk               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 void	ft_swap_node(t_list *a, t_list *b)
 {
 	t_list	*tmp_next;
-  t_list	*tmp_prev;
 
 	tmp_next = b->next;
 	b->next = a;

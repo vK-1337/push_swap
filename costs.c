@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   costs.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vda-conc <vda-conc@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vk <vk@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/16 15:40:19 by vk                #+#    #+#             */
-/*   Updated: 2023/12/17 19:30:59 by vda-conc         ###   ########.fr       */
+/*   Updated: 2023/12/17 23:32:33 by vk               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,9 +38,9 @@ void	ft_single_cost_a(int *cost, int *a_node_pos, int a_size)
 			(*cost)++;
 		}
 	}
-	if (*a_node_pos < a_size / 2)
+	else if (*a_node_pos < a_size / 2)
 	{
-		while (*a_node_pos >= 1)
+		while (*a_node_pos > 1)
 		{
 			(*a_node_pos)--;
 			(*cost)++;
@@ -58,9 +58,9 @@ void	ft_single_cost_b(int *cost, int *b_node_pos, int b_size)
 			(*cost)++;
 		}
 	}
-	if (*b_node_pos < b_size / 2)
+	else if (*b_node_pos < b_size / 2)
 	{
-		while (*b_node_pos >= 1)
+		while (*b_node_pos > 1)
 		{
 			(*b_node_pos)--;
 			(*cost)++;
@@ -80,9 +80,9 @@ void	ft_multiple_costs(int *cost, int *a_node_pos, int *b_node_pos,
 			(*cost)++;
 		}
 	}
-	if ((*a_node_pos < a_size / 2) && (*b_node_pos < b_size / 2))
+	else if ((*a_node_pos <= a_size / 2) && (*b_node_pos <= b_size / 2))
 	{
-		while (*a_node_pos >= 1 && *b_node_pos >= 1)
+		while (*a_node_pos > 1 && *b_node_pos > 1)
 		{
 			(*a_node_pos)--;
 			(*b_node_pos)--;
