@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vk <vk@student.42.fr>                      +#+  +:+       +#+        */
+/*   By: vda-conc <vda-conc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/07 08:40:32 by vda-conc          #+#    #+#             */
-/*   Updated: 2023/12/16 16:22:36 by vk               ###   ########.fr       */
+/*   Updated: 2023/12/17 19:31:21 by vda-conc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,20 +17,21 @@
 # include <stdio.h>
 # include <unistd.h>
 
-
 int		ft_is_same(int ac, char **av);
 int		ft_parse(int ac, char **av);
 int		ft_check_validity(char *str);
 int		ft_check_single_arg(char *str);
 int		ft_already_sorted(t_list **list);
 int		ft_find_lst_max(t_list **list);
+int		ft_find_lst_min(t_list **list);
 int		ft_check_multiple_args(int ac, char **av);
-int	ft_content_diff(t_list *a_list_node, t_list *b_list_node);
-int ft_cost(int a_node_pos, int b_node_pos, t_list **list_a, t_list **list_b);
-void ft_single_cost_a(int *cost, int *a_node_pos, int a_size);
-void ft_single_cost_b(int *cost, int *b_node_pos, int b_size);
-void ft_multiple_costs(int *cost, int *a_node_pos, int *b_node_pos, int a_size, int b_size);
-
+int		ft_content_diff(t_list *a_list_node, t_list *b_list_node);
+int		ft_cost(int a_node_pos, int b_node_pos, t_list **list_a,
+			t_list **list_b);
+void	ft_single_cost_a(int *cost, int *a_node_pos, int a_size);
+void	ft_single_cost_b(int *cost, int *b_node_pos, int b_size);
+void	ft_multiple_costs(int *cost, int *a_node_pos, int *b_node_pos,
+			int a_size, int b_size);
 
 t_list	*ft_make_list(char **str_tab, int ac);
 void	ft_three_sort_a(t_list **list);
@@ -48,5 +49,11 @@ void	ft_swap_pb(t_list **list_a, t_list **list_b);
 void	ft_swap_rra(t_list **list_a);
 void	ft_swap_rrb(t_list **list_b);
 void	ft_swap_rrr(t_list **list_a, t_list **list_b);
+
+typedef struct s_target_info
+{
+	int	target_pos;
+	int	pos_to_insert;
+}		t_target_info;
 
 #endif

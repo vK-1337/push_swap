@@ -6,7 +6,7 @@
 /*   By: vda-conc <vda-conc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/15 23:48:09 by vda-conc          #+#    #+#             */
-/*   Updated: 2023/12/16 00:24:44 by vda-conc         ###   ########.fr       */
+/*   Updated: 2023/12/17 19:25:04 by vda-conc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,15 @@
 
 int	ft_find_lst_max(t_list **list)
 {
-	int		max;
 	int		i;
+	int		max;
 	int		max_position;
 	t_list	*curr;
 
 	i = 1;
+	max_position = 1;
 	curr = *list;
 	max = curr->content;
-	max_position = 1;
 	while (curr->next != NULL)
 	{
 		if (curr->content > max)
@@ -30,10 +30,35 @@ int	ft_find_lst_max(t_list **list)
 			max_position = i;
 			max = curr->content;
 		}
-    curr = curr->next;
+		curr = curr->next;
 		i++;
 	}
 	if (curr->content > max)
 		max_position = i + 1;
 	return (max_position);
+}
+int	ft_find_lst_min(t_list **list)
+{
+	int		i;
+	int		min;
+	int		min_position;
+	t_list	*curr;
+
+	i = 1;
+	min_position = 1;
+	curr = *list;
+	min = curr->content;
+	while (curr->next != NULL)
+	{
+		if (curr->content < min)
+		{
+			min_position = i;
+			min = curr->content;
+		}
+		curr = curr->next;
+		i++;
+	}
+	if (curr->content < min)
+		min_position = i + 1;
+	return (min_position);
 }

@@ -6,7 +6,7 @@
 /*   By: vda-conc <vda-conc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/15 19:01:38 by vda-conc          #+#    #+#             */
-/*   Updated: 2023/12/16 01:09:26 by vda-conc         ###   ########.fr       */
+/*   Updated: 2023/12/17 19:29:20 by vda-conc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	ft_swap_rra(t_list **list_a)
 	tmp->prev->next = NULL;
 	ft_lstadd_front(list_a, tmp);
 	*list_a = tmp;
-  write(1, "rra\n", 4);
+	write(1, "rra\n", 4);
 }
 
 void	ft_swap_rrb(t_list **list_b)
@@ -31,14 +31,14 @@ void	ft_swap_rrb(t_list **list_b)
 	tmp->prev->next = NULL;
 	ft_lstadd_front(list_b, tmp);
 	*list_b = tmp;
-  write(1, "rrb\n", 4);
+	write(1, "rrb\n", 4);
 }
 
 void	ft_swap_rrr(t_list **list_a, t_list **list_b)
 {
 	ft_swap_rra(list_a);
 	ft_swap_rrb(list_b);
-  write(1, "rrr\n", 4);
+	write(1, "rrr\n", 4);
 }
 
 t_list	*ft_make_list(char **av, int ac)
