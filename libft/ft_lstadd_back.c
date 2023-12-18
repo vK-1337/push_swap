@@ -6,7 +6,7 @@
 /*   By: vda-conc <vda-conc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/12 23:26:06 by vk                #+#    #+#             */
-/*   Updated: 2023/12/15 21:07:40 by vda-conc         ###   ########.fr       */
+/*   Updated: 2023/12/18 11:37:24 by vda-conc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ void	ft_lstadd_back(t_list **lst, t_list *new)
 		tmp = ft_lstlast((*lst));
 		tmp->next = new;
 		new->prev = tmp;
+    new->next = NULL;
 	}
 	else
 	{

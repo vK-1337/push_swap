@@ -6,7 +6,7 @@
 /*   By: vda-conc <vda-conc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 09:48:49 by vda-conc          #+#    #+#             */
-/*   Updated: 2023/12/17 19:50:57 by vda-conc         ###   ########.fr       */
+/*   Updated: 2023/12/18 20:18:35 by vda-conc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,10 @@ void	ft_swap_pa(t_list **list_a, t_list **list_b)
 {
 	t_list	*tmp;
 
-	if (*list_b == NULL)
-		return ;
-	tmp = *list_b;
-	*list_b = (*list_b)->next;
-	tmp->next = *list_a;
-	*list_a = tmp;
-	write(1, "pa\n", 3);
+  tmp = *list_b;
+  *list_b = (*list_b)->next;
+	ft_lstadd_front(list_a, tmp);
+	ft_write_instruction("pa\n");
 }
 
 void	ft_swap_ra(t_list **list_a)
@@ -31,9 +28,8 @@ void	ft_swap_ra(t_list **list_a)
 
 	tmp = (*list_a)->next;
 	ft_lstadd_back(list_a, (*list_a));
-	(*list_a)->next = NULL;
 	*list_a = tmp;
-	write(1, "ra\n", 3);
+	ft_write_instruction("ra\n");
 }
 
 void	ft_swap_rb(t_list **list_b)
@@ -42,14 +38,13 @@ void	ft_swap_rb(t_list **list_b)
 
 	tmp = (*list_b)->next;
 	ft_lstadd_back(list_b, (*list_b));
-	(*list_b)->next = NULL;
 	*list_b = tmp;
-	write(1, "rb\n", 3);
+	ft_write_instruction("rb\n");
 }
 
 void	ft_swap_rr(t_list **list_a, t_list **list_b)
 {
 	ft_swap_ra(list_a);
 	ft_swap_rb(list_b);
-	write(1, "rr\n", 3);
+	ft_write_instruction("rr\n");
 }
