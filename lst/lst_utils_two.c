@@ -6,7 +6,7 @@
 /*   By: vda-conc <vda-conc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/15 18:59:43 by vda-conc          #+#    #+#             */
-/*   Updated: 2023/12/18 20:31:53 by vda-conc         ###   ########.fr       */
+/*   Updated: 2023/12/18 20:54:09 by vda-conc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ void ft_write_instruction(char *str)
 
   if (!str)
   {
-    ft_putnbr_fd(instruction_count, 2);
+    // ft_putnbr_fd(instruction_count, 2);
     return;
   }
   ft_putstr_fd(str, 1);

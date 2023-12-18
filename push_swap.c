@@ -6,7 +6,7 @@
 /*   By: vda-conc <vda-conc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/07 08:40:29 by vda-conc          #+#    #+#             */
-/*   Updated: 2023/12/18 20:30:51 by vda-conc         ###   ########.fr       */
+/*   Updated: 2023/12/18 21:08:39 by vda-conc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,19 +118,19 @@ void	ft_sort(t_list **list_a)
 	while (ft_lstsize(*list_a) >= 4)
 	{
 		positions = ft_cheapest_moves_a(list_a, list_b);
-    // printf("\nLIST A -> LIST B\n\ntarget pos : %d || pos to insert %d\n", positions.target_pos, positions.pos_to_insert);
+    printf("\nLIST A -> LIST B\n\ntarget pos : %d || pos to insert %d\n", positions.target_pos, positions.pos_to_insert);
 		ft_execute_moves_a(list_a, list_b, positions);
 	}
 	ft_three_sort_a(list_a);
-  // printf("\n\n | CONTENU DES DEUX LISTES JUSTE APRES SORT THREE | \n\n");
-  // printf("\n\n | LIST A | \n\n");
-  // ft_print_list(list_a);
-  // printf("\n\n | LIST B | \n\n");
+  printf("\n\n | CONTENU DES DEUX LISTES JUSTE APRES SORT THREE | \n\n");
+  printf("\n\n | LIST A | \n\n");
+  ft_print_list(list_a);
+  printf("\n\n | LIST B | \n\n");
   ft_print_list(list_b);
 	while (ft_lstsize(*list_b) > 0)
 	{
 		positions = ft_cheapest_moves_b(list_a, list_b);
-    // printf("\nLIST B -> LIST A\n\ntarget pos : %d || pos to insert %d\n", positions.target_pos, positions.pos_to_insert);
+    printf("\nLIST B -> LIST A\n\ntarget pos : %d || pos to insert %d\n", positions.target_pos, positions.pos_to_insert);
 		ft_execute_moves_b(list_a, list_b, positions);
 	}
 }
@@ -307,6 +307,7 @@ int	ft_push_swap(int ac, char **av)
 // 	}
 // 	printf("Contenu du noeud numero %d : |%d|\n", i, curr->content);
   ft_final_sort(list_a);
+  ft_print_list(list_a);
 //   printf("Liste apres final_sort :\n");
 //   i = 0;
 //   curr = *list_a;
@@ -326,6 +327,5 @@ int	main(int ac, char **av)
 	if (!ft_parse(ac, av))
 		return (write(2, "Error\n", 6), 0);
 	ft_push_swap(ac, av);
-  ft_write_instruction(NULL);
 	return (0);
 }
