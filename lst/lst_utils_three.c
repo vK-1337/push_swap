@@ -6,24 +6,24 @@
 /*   By: vda-conc <vda-conc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/15 19:01:38 by vda-conc          #+#    #+#             */
-/*   Updated: 2023/12/18 20:17:22 by vda-conc         ###   ########.fr       */
+/*   Updated: 2023/12/19 16:20:01 by vda-conc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-void ft_swap_rra(t_list **list_a) {
+void ft_swap_rra(t_list **list_a, int is_rrr) {
     t_list *tmp;
 
     tmp = ft_lstlast(*list_a);
-    if (tmp && tmp->prev) {
+    if (tmp->prev)
         tmp->prev->next = NULL;
-        ft_lstadd_front(list_a, tmp);
-	      ft_write_instruction("rra\n");
-    }
+    ft_lstadd_front(list_a, tmp);
+    if (!is_rrr)
+      ft_write_instruction("rra\n");
 }
 
-void	ft_swap_rrb(t_list **list_b)
+void	ft_swap_rrb(t_list **list_b, int is_rrr)
 {
 	t_list	*tmp;
 
@@ -31,13 +31,14 @@ void	ft_swap_rrb(t_list **list_b)
   if(tmp->prev)
 	  tmp->prev->next = NULL;
 	ft_lstadd_front(list_b, tmp);
-	ft_write_instruction("rrb\n");
+  if (!is_rrr)
+	  ft_write_instruction("rrb\n");
 }
 
 void	ft_swap_rrr(t_list **list_a, t_list **list_b)
 {
-	ft_swap_rra(list_a);
-	ft_swap_rrb(list_b);
+	ft_swap_rra(list_a, 1);
+	ft_swap_rrb(list_b, 1);
 	ft_write_instruction("rrr\n");
 }
 

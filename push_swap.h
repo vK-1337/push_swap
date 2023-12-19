@@ -6,7 +6,7 @@
 /*   By: vda-conc <vda-conc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/07 08:40:32 by vda-conc          #+#    #+#             */
-/*   Updated: 2023/12/18 20:25:56 by vda-conc         ###   ########.fr       */
+/*   Updated: 2023/12/19 16:09:44 by vda-conc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,14 +57,14 @@ void ft_final_sort(t_list **list_a);
 void	ft_swap_node(t_list *a, t_list *b);
 void	ft_swap_rr(t_list **list_a, t_list **list_b);
 void	ft_swap_pa(t_list **list_a, t_list **list_b);
-void	ft_swap_ra(t_list **list_a);
-void	ft_swap_rb(t_list **list_b);
+void	ft_swap_ra(t_list **list_a, int is_rr);
+void	ft_swap_rb(t_list **list_b, int is_rr);
 void	ft_swap_a(t_list **list);
 void	ft_swap_b(t_list **list);
 void	ft_swap_ss(t_list **list_a, t_list **list_b);
 void	ft_swap_pb(t_list **list_a, t_list **list_b);
-void	ft_swap_rra(t_list **list_a);
-void	ft_swap_rrb(t_list **list_b);
+void	ft_swap_rra(t_list **list_a, int is_rrr);
+void	ft_swap_rrb(t_list **list_b, int is_rrr);
 void	ft_swap_rrr(t_list **list_a, t_list **list_b);
 
 void ft_print_list(t_list **list);

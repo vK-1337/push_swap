@@ -6,11 +6,12 @@
 /*   By: vda-conc <vda-conc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/12 22:24:47 by vk                #+#    #+#             */
-/*   Updated: 2023/12/18 18:13:48 by vda-conc         ###   ########.fr       */
+/*   Updated: 2023/12/19 16:50:26 by vda-conc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <stdio.h>
 
 void	ft_lstadd_front(t_list **lst, t_list *new)
 {
