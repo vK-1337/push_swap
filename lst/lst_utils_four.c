@@ -6,7 +6,7 @@
 /*   By: vda-conc <vda-conc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/15 23:48:09 by vda-conc          #+#    #+#             */
-/*   Updated: 2023/12/19 17:32:21 by vda-conc         ###   ########.fr       */
+/*   Updated: 2023/12/20 17:41:33 by vda-conc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,6 @@ int	ft_find_lst_min(t_list **list)
 		i++;
 	}
 	if (curr->content < min)
-		min_position = i + 1;
+		min_position = i;
 	return (min_position);
 }

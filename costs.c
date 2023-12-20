@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   costs.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vk <vk@student.42.fr>                      +#+  +:+       +#+        */
+/*   By: vda-conc <vda-conc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/16 15:40:19 by vk                #+#    #+#             */
-/*   Updated: 2023/12/17 23:32:33 by vk               ###   ########.fr       */
+/*   Updated: 2023/12/20 18:27:54 by vda-conc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,15 @@ int	ft_cost(int a_node_pos, int b_node_pos, t_list **list_a, t_list **list_b)
 
 	list_a_size = ft_lstsize(*list_a);
 	list_b_size = ft_lstsize(*list_b);
-	cost = 0;
+	cost = 1;
+  printf("\nNOEUD QUI A POUR POSITION DANS NOEUD A => %d\n", a_node_pos);
+  printf("NOEUD QUI A POUR POSITION DANS NOEUD B => %d\n", b_node_pos);
 	ft_multiple_costs(&cost, &a_node_pos, &b_node_pos, list_a_size,
 		list_b_size);
 	ft_single_cost_a(&cost, &a_node_pos, list_a_size);
 	ft_single_cost_b(&cost, &b_node_pos, list_b_size);
+  printf("COUT => %d\n\n", cost);
+  // MAUVAIS COUT POUR LES MILIEU DE LISTE ET FIN DE LISTE
 	return (cost);
 }
 

@@ -6,7 +6,7 @@
 /*   By: vda-conc <vda-conc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/07 08:40:29 by vda-conc          #+#    #+#             */
-/*   Updated: 2023/12/19 19:10:54 by vda-conc         ###   ########.fr       */
+/*   Updated: 2023/12/20 18:23:34 by vda-conc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -229,6 +229,10 @@ t_target_info	ft_cheapest_moves_a(t_list **list_a, t_list **list_b)
 	curr_a = *list_a;
 	i = 1;
 	target_position = ft_get_target(curr_a, list_b);
+  printf("\nCONTENU DE LA LISTE A : \n\n");
+  ft_print_list(list_a);
+  printf("\nCONTENU DE LA LISTE B : \n\n");
+  ft_print_list(list_b);
 	cost = ft_cost(i, target_position, list_a, list_b);
 	insertion_info.target_pos = target_position;
 	insertion_info.pos_to_insert = i;
@@ -300,6 +304,6 @@ int	main(int ac, char **av)
 	if (!ft_parse(ac, av))
 		return (write(2, "Error\n", 6), 0);
 	ft_push_swap(ac, av);
-	ft_write_instruction(NULL);
+	// ft_write_instruction(NULL);
 	return (0);
 }

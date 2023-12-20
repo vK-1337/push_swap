@@ -6,7 +6,7 @@
 /*   By: vda-conc <vda-conc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/15 23:09:53 by vda-conc          #+#    #+#             */
-/*   Updated: 2023/12/19 17:33:00 by vda-conc         ###   ########.fr       */
+/*   Updated: 2023/12/20 18:05:15 by vda-conc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,11 +54,10 @@ void	ft_final_sort(t_list **list_a)
 {
 	int	min_pos;
 	int	list_size;
-	int	max_pos;
 
 	min_pos = ft_find_lst_min(list_a);
-	max_pos = ft_find_lst_max(list_a);
 	list_size = ft_lstsize(*list_a);
+  // printf("Position du min = |%d|\n", min_pos);
 	if (min_pos <= list_size / 2)
 	{
 		while (min_pos > 1)
@@ -69,15 +68,10 @@ void	ft_final_sort(t_list **list_a)
 	}
 	else if (min_pos > list_size / 2)
 	{
-		while (min_pos <= list_size)
+		while (min_pos < list_size + 1)
 		{
 			ft_swap_rra(list_a, 0);
 			min_pos++;
 		}
 	}
 }
-
-// ft_final_target(t_list **list_a)
-// {
-//    Determiner selon le min ou le max dans ma liste a si je ra ou rra par rapport aux positions
-// }
