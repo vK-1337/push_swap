@@ -6,7 +6,7 @@
 /*   By: vda-conc <vda-conc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/07 08:40:29 by vda-conc          #+#    #+#             */
-/*   Updated: 2023/12/20 18:23:34 by vda-conc         ###   ########.fr       */
+/*   Updated: 2023/12/21 21:25:38 by vda-conc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,32 +15,104 @@
 void	ft_execute_moves_a(t_list **list_a, t_list **list_b,
 		t_target_info positions)
 {
-	ft_multiple_moves(&positions.pos_to_insert, &positions.target_pos, list_a, list_b);
-	ft_move_a(&positions.pos_to_insert, list_a);
-	ft_move_b(&positions.target_pos, list_b);
-	if ((*list_b)->content < (*list_a)->content)
-		ft_swap_rb(list_b, 0);
+	int	a_greater;
+
+	ft_multiple_moves(&positions.pos_to_insert, &positions.target_pos, list_a,
+		list_b);
+	a_greater = ft_is_a_greater(list_a, list_b, positions.pos_to_insert,
+			positions.target_pos);
+	ft_move_a(&positions.pos_to_insert, list_a, 0);
+	ft_move_b(&positions.target_pos, list_b, a_greater);
+	// if ((*list_b)->content < (*list_a)->content)
+	// 	ft_swap_rb(list_b, 0);
 	ft_swap_pb(list_a, list_b);
 }
 
 void	ft_execute_moves_b(t_list **list_a, t_list **list_b,
 		t_target_info positions)
 {
-	ft_multiple_moves(&positions.target_pos, &positions.pos_to_insert, list_a, list_b);
-	ft_move_a(&positions.target_pos, list_a);
-	ft_move_b(&positions.pos_to_insert, list_b);
-	if ((*list_a)->content < (*list_b)->content)
-		ft_swap_ra(list_a, 0);
+	int	b_greater;
+
+	ft_multiple_moves(&positions.target_pos, &positions.pos_to_insert, list_a,
+		list_b);
+	b_greater = ft_is_b_greater(list_a, list_b, positions.target_pos,
+			positions.pos_to_insert);
+	ft_move_a(&positions.target_pos, list_a, b_greater);
+	ft_move_b(&positions.pos_to_insert, list_b, 0);
+	// if ((*list_b)->content > (*list_a)->content)
+	// 	ft_swap_ra(list_a, 0);
 	ft_swap_pa(list_a, list_b);
 }
 
-void	ft_move_a(int *a_node_pos, t_list **list_a)
+int	ft_is_a_greater(t_list **list_a, t_list **list_b, int a_node_pos,
+		int b_node_pos)
+{
+	int		i;
+	t_list	*curr;
+	int		list_a_value;
+	int		list_b_value;
+
+	i = 1;
+	curr = *list_a;
+	while (i < a_node_pos)
+	{
+		curr = curr->next;
+		i++;
+	}
+	list_a_value = curr->content;
+	i = 1;
+  curr = *list_b;
+	while (i < b_node_pos && curr->next != NULL)
+	{
+		curr = curr->next;
+		i++;
+	}
+	list_b_value = curr->content;
+	if (list_a_value > list_b_value)
+		return (1);
+	else
+		return (0);
+}
+
+int	ft_is_b_greater(t_list **list_a, t_list **list_b, int a_node_pos,
+		int b_node_pos)
+{
+	int		i;
+	t_list	*curr;
+	int		list_a_value;
+	int		list_b_value;
+
+	i = 1;
+	curr = *list_a;
+	while (i < a_node_pos)
+	{
+		curr = curr->next;
+		i++;
+	}
+	list_a_value = curr->content;
+  printf("\n\nNoeud a liste A a la position : %d => %d\n", i , curr->content);
+	i = 1;
+  curr = *list_b;
+	while (i < b_node_pos)
+	{
+		curr = curr->next;
+		i++;
+	}
+	list_b_value = curr->content;
+  printf("\n\nNoeud a liste B a la position : %d => %d\n", i , curr->content);
+	if (list_b_value > list_a_value)
+		return (1);
+	else
+		return (0);
+}
+void	ft_move_a(int *a_node_pos, t_list **list_a, int b_greater)
 {
 	int	a_size;
+
 	a_size = ft_lstsize(*list_a);
 	if (*a_node_pos > a_size / 2)
 	{
-		while (*a_node_pos <= a_size)
+		while (*a_node_pos <= a_size && *a_node_pos != 1)
 		{
 			ft_swap_rra(list_a, 0);
 			(*a_node_pos)++;
@@ -48,6 +120,8 @@ void	ft_move_a(int *a_node_pos, t_list **list_a)
 	}
 	else if (*a_node_pos <= a_size / 2)
 	{
+    if (b_greater && *a_node_pos != 1)
+			(*a_node_pos)++;
 		while (*a_node_pos > 1)
 		{
 			ft_swap_ra(list_a, 0);
@@ -56,13 +130,15 @@ void	ft_move_a(int *a_node_pos, t_list **list_a)
 	}
 }
 
-void	ft_move_b(int *b_node_pos, t_list **list_b)
+void	ft_move_b(int *b_node_pos, t_list **list_b, int b_greater)
 {
 	int	b_size;
 
 	b_size = ft_lstsize(*list_b);
 	if (*b_node_pos > b_size / 2)
 	{
+		if (!b_greater)
+			(*b_node_pos)++;
 		while (*b_node_pos <= b_size && *b_node_pos != 1)
 		{
 			ft_swap_rrb(list_b, 0);
@@ -189,12 +265,26 @@ int	ft_get_target(t_list *a_list_node, t_list **list_b)
 	curr = *list_b;
 	target_position = 1;
 	i = 1;
+  printf("CONTENT DE A LIST NODE : |%d|", (*a_list_node).content);
+  if ((*a_list_node).content > ft_find_node_content(list_b, ft_find_lst_max(list_b)))
+  {
+    printf("OUI\n");
+    target_position = ft_find_lst_min(list_b);
+    return (target_position);
+  }
+  if ((*a_list_node).content < ft_find_node_content(list_b, ft_find_lst_min(list_b)))
+  {
+    printf("NON\n");
+    printf("\n\nCONTENU DU MIN DE LA LISTE : %d\n\n", ft_find_node_content(list_b, ft_find_lst_min(list_b)));
+    target_position = ft_find_lst_max(list_b);
+    return (target_position);
+  }
 	content_diff = ft_content_diff(a_list_node, curr);
 	while (curr->next != NULL)
 	{
 		if ((ft_content_diff(a_list_node, curr)) <= content_diff)
 		{
-      target_position = i;
+			target_position = i;
 			content_diff = ft_content_diff(a_list_node, curr);
 		}
 		i++;
@@ -229,10 +319,10 @@ t_target_info	ft_cheapest_moves_a(t_list **list_a, t_list **list_b)
 	curr_a = *list_a;
 	i = 1;
 	target_position = ft_get_target(curr_a, list_b);
-  printf("\nCONTENU DE LA LISTE A : \n\n");
-  ft_print_list(list_a);
-  printf("\nCONTENU DE LA LISTE B : \n\n");
-  ft_print_list(list_b);
+	printf("\nCONTENU DE LA LISTE A : \n\n");
+	ft_print_list(list_a);
+	printf("\nCONTENU DE LA LISTE B : \n\n");
+	ft_print_list(list_b);
 	cost = ft_cost(i, target_position, list_a, list_b);
 	insertion_info.target_pos = target_position;
 	insertion_info.pos_to_insert = i;
@@ -248,6 +338,8 @@ t_target_info	ft_cheapest_moves_a(t_list **list_a, t_list **list_b)
 		i++;
 		curr_a = curr_a->next;
 	}
+	printf("\nNOEUD CHOISI A INSERER POSITION DANS LA LISTE A => %d\n",
+		insertion_info.pos_to_insert);
 	return (insertion_info);
 }
 
@@ -262,6 +354,10 @@ t_target_info	ft_cheapest_moves_b(t_list **list_a, t_list **list_b)
 	curr_b = *list_b;
 	i = 1;
 	target_position = ft_get_target(curr_b, list_a);
+	printf("\nCONTENU DE LA LISTE A : \n\n");
+	ft_print_list(list_a);
+	printf("\nCONTENU DE LA LISTE B : \n\n");
+	ft_print_list(list_b);
 	cost = ft_cost(i, target_position, list_b, list_a);
 	insertion_info.target_pos = target_position;
 	insertion_info.pos_to_insert = i;
@@ -277,6 +373,8 @@ t_target_info	ft_cheapest_moves_b(t_list **list_a, t_list **list_b)
 		i++;
 		curr_b = curr_b->next;
 	}
+	printf("\nNOEUD CHOISI A INSERER POSITION DANS LA LISTE B => %d\n",
+		insertion_info.pos_to_insert);
 	return (insertion_info);
 }
 

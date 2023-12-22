@@ -6,12 +6,27 @@
 /*   By: vda-conc <vda-conc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/15 23:48:09 by vda-conc          #+#    #+#             */
-/*   Updated: 2023/12/20 17:41:33 by vda-conc         ###   ########.fr       */
+/*   Updated: 2023/12/21 20:41:01 by vda-conc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
+int ft_find_node_content(t_list **list, int position)
+{
+  int i;
+  t_list *curr;
+
+  i = 2;
+  curr = *list;
+  while (i <= position && curr->next != NULL)
+  {
+    printf("CURR -> CONTENT = |%d|\n", curr->content);
+    curr = curr->next;
+    i++;
+  }
+  return (curr->content);
+}
 int	ft_find_lst_max(t_list **list)
 {
 	int		i;

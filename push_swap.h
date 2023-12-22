@@ -6,7 +6,7 @@
 /*   By: vda-conc <vda-conc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/07 08:40:32 by vda-conc          #+#    #+#             */
-/*   Updated: 2023/12/19 17:33:20 by vda-conc         ###   ########.fr       */
+/*   Updated: 2023/12/21 20:29:08 by vda-conc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,8 @@ int				ft_find_lst_max(t_list **list);
 int				ft_find_lst_min(t_list **list);
 int				ft_check_multiple_args(int ac, char **av);
 int				ft_content_diff(t_list *a_list_node, t_list *b_list_node);
+int ft_find_node_content(t_list **list, int position);
+
 
 //  COST.C
 int				ft_cost(int a_node_pos, int b_node_pos, t_list **list_a,
@@ -44,10 +46,14 @@ void			ft_multiple_costs(int *cost, int *a_node_pos, int *b_node_pos,
 void			ft_write_instruction(char *str);
 void			ft_execute_moves(t_list **list_a, t_list **list_b,
 					t_target_info positions);
-void			ft_move_a(int *a_node_pos, t_list **list_a);
-void			ft_move_b(int *b_node_pos, t_list **list_b);
+void	ft_move_a(int *a_node_pos, t_list **list_a, int a_greater);
+void	ft_move_b(int *b_node_pos, t_list **list_b, int b_greater);
 void			ft_multiple_moves(int *a_node_pos, int *b_node_pos,
 					t_list **list_a, t_list **list_b);
+int	ft_is_a_greater(t_list **list_a, t_list **list_b, int a_node_pos,
+		int b_node_pos);
+    int	ft_is_b_greater(t_list **list_a, t_list **list_b, int a_node_pos,
+		int b_node_pos);
 
 t_target_info	ft_cheapest_moves_b(t_list **list_b, t_list **list_a);
 t_target_info	ft_cheapest_moves_a(t_list **list_a, t_list **list_b);

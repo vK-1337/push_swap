@@ -6,7 +6,7 @@
 /*   By: vda-conc <vda-conc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/15 14:58:13 by vda-conc          #+#    #+#             */
-/*   Updated: 2023/12/20 17:59:35 by vda-conc         ###   ########.fr       */
+/*   Updated: 2023/12/21 17:03:02 by vda-conc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,3 +107,7 @@ int	ft_parse(int ac, char **av)
 	}
 	return (1);
 }
+// PRENDRE EN COMPTE LE FAIT QUE SI J'AI RB ET RRB CE  N'EST PAS NORMAL IL FAUT QUE JE GERE
+// DANS LE CAS OU LE SOMMET DE LA PILE B OU DE LA PILE A EST LE NOUVEAU MAX DE LA PILE OU JE VEUX L'ENVOYER
+// DANS CE CAS, IL NE FAUT PAS QUE JE FASSE UN RB SUIVI D'UN RRB
+// REUSSI A ISOLER LE CAS OU MON NOMBRE DE LA LISTE 
