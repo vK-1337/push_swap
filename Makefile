@@ -6,19 +6,22 @@
 #    By: vda-conc <vda-conc@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/07 08:40:39 by vda-conc          #+#    #+#              #
-#    Updated: 2023/12/18 11:15:35 by vda-conc         ###   ########.fr        #
+#    Updated: 2023/12/22 15:18:29 by vda-conc         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 SRC = sort.c \
 			costs.c \
 			debug.c \
+			index.c \
 			parsing.c \
 			push_swap.c \
+			push_swap_utils.c \
 			./lst/lst_utils.c \
 			./lst/lst_utils_two.c \
 			./lst/lst_utils_three.c \
 			./lst/lst_utils_four.c \
+			./lst/lst_utils_five.c \
 
 OBJS = $(SRC:.c=.o) ./libft/libft.a
 

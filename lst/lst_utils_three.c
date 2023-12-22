@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lst_utils_three.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vk <vk@student.42.fr>                      +#+  +:+       +#+        */
+/*   By: vda-conc <vda-conc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/15 19:01:38 by vda-conc          #+#    #+#             */
-/*   Updated: 2023/12/21 23:27:22 by vk               ###   ########.fr       */
+/*   Updated: 2023/12/22 13:13:41 by vda-conc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ void	ft_swap_rra(t_list **list_a, int is_rrr)
 	if (tmp->prev)
 		tmp->prev->next = NULL;
 	ft_lstadd_front(list_a, tmp);
+  ft_refresh_pos(list_a);
 	if (!is_rrr)
 		ft_write_instruction("rra\n");
 }
@@ -32,6 +33,7 @@ void	ft_swap_rrb(t_list **list_b, int is_rrr)
 	if (tmp->prev)
 		tmp->prev->next = NULL;
 	ft_lstadd_front(list_b, tmp);
+  ft_refresh_pos(list_b);
 	if (!is_rrr)
 		ft_write_instruction("rrb\n");
 }
@@ -40,6 +42,8 @@ void	ft_swap_rrr(t_list **list_a, t_list **list_b)
 {
 	ft_swap_rra(list_a, 1);
 	ft_swap_rrb(list_b, 1);
+  ft_refresh_pos(list_a);
+  ft_refresh_pos(list_b);
 	ft_write_instruction("rrr\n");
 }
 

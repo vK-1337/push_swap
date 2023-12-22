@@ -6,28 +6,27 @@
 /*   By: vda-conc <vda-conc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/15 23:48:09 by vda-conc          #+#    #+#             */
-/*   Updated: 2023/12/21 20:41:01 by vda-conc         ###   ########.fr       */
+/*   Updated: 2023/12/22 12:39:13 by vda-conc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-int ft_find_node_content(t_list **list, int position)
+int	ft_find_node_content(t_list **list, int position)
 {
-  int i;
-  t_list *curr;
+	int		i;
+	t_list	*curr;
 
-  i = 2;
-  curr = *list;
-  while (i <= position && curr->next != NULL)
-  {
-    printf("CURR -> CONTENT = |%d|\n", curr->content);
-    curr = curr->next;
-    i++;
-  }
-  return (curr->content);
+	i = 2;
+	curr = *list;
+	while (i <= position && curr->next != NULL)
+	{
+		curr = curr->next;
+		i++;
+	}
+	return (curr->content);
 }
-int	ft_find_lst_max(t_list **list)
+int	ft_find_lst_max_pos(t_list **list)
 {
 	int		i;
 	int		max;
@@ -49,11 +48,11 @@ int	ft_find_lst_max(t_list **list)
 		i++;
 	}
 	if (curr->content > max)
-		max_position = i + 1;
+		max_position = i;
 	return (max_position);
 }
 
-int	ft_find_lst_min(t_list **list)
+int	ft_find_lst_min_pos(t_list **list)
 {
 	int		i;
 	int		min;
