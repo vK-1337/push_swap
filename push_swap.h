@@ -6,7 +6,7 @@
 /*   By: vda-conc <vda-conc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/07 08:40:32 by vda-conc          #+#    #+#             */
-/*   Updated: 2023/12/21 20:29:08 by vda-conc         ###   ########.fr       */
+/*   Updated: 2023/12/22 09:08:54 by vda-conc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,36 +31,13 @@ int				ft_already_sorted(t_list **list);
 int				ft_find_lst_max(t_list **list);
 int				ft_find_lst_min(t_list **list);
 int				ft_check_multiple_args(int ac, char **av);
-int				ft_content_diff(t_list *a_list_node, t_list *b_list_node);
-int ft_find_node_content(t_list **list, int position);
-
-
-//  COST.C
-int				ft_cost(int a_node_pos, int b_node_pos, t_list **list_a,
-					t_list **list_b);
-void			ft_single_cost_a(int *cost, int *a_node_pos, int a_size);
-void			ft_single_cost_b(int *cost, int *b_node_pos, int b_size);
-void			ft_multiple_costs(int *cost, int *a_node_pos, int *b_node_pos,
-					int a_size, int b_size);
 
 void			ft_write_instruction(char *str);
-void			ft_execute_moves(t_list **list_a, t_list **list_b,
-					t_target_info positions);
-void	ft_move_a(int *a_node_pos, t_list **list_a, int a_greater);
-void	ft_move_b(int *b_node_pos, t_list **list_b, int b_greater);
-void			ft_multiple_moves(int *a_node_pos, int *b_node_pos,
-					t_list **list_a, t_list **list_b);
-int	ft_is_a_greater(t_list **list_a, t_list **list_b, int a_node_pos,
-		int b_node_pos);
-    int	ft_is_b_greater(t_list **list_a, t_list **list_b, int a_node_pos,
-		int b_node_pos);
 
-t_target_info	ft_cheapest_moves_b(t_list **list_b, t_list **list_a);
-t_target_info	ft_cheapest_moves_a(t_list **list_a, t_list **list_b);
-t_list			*ft_make_list(char **str_tab, int ac);
+t_list			*ft_make_list(int ac, char **av);
 void			ft_three_sort_a(t_list **list);
-void			ft_sort(t_list **list_a);
-void			ft_final_sort(t_list **list_a);
+void ft_push_swap(t_list **list_a);
+
 
 void			ft_swap_node(t_list *a, t_list *b);
 void			ft_swap_rr(t_list **list_a, t_list **list_b);

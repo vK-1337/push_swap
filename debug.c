@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   debug.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vda-conc <vda-conc@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vk <vk@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/18 11:11:50 by vda-conc          #+#    #+#             */
-/*   Updated: 2023/12/20 18:20:30 by vda-conc         ###   ########.fr       */
+/*   Updated: 2023/12/21 23:54:31 by vk               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ void	ft_print_list(t_list **list)
 	t_list	*curr;
 	int		i;
 
+  if (!(*list))
+    return;
 	curr = *list;
 	i = 1;
 	while (curr->next != NULL)

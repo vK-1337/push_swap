@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lst_utils_three.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vda-conc <vda-conc@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vk <vk@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/15 19:01:38 by vda-conc          #+#    #+#             */
-/*   Updated: 2023/12/19 17:32:10 by vda-conc         ###   ########.fr       */
+/*   Updated: 2023/12/21 23:27:22 by vk               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ void	ft_swap_rrr(t_list **list_a, t_list **list_b)
 	ft_write_instruction("rrr\n");
 }
 
-t_list	*ft_make_list(char **av, int ac)
+t_list			*ft_make_list(int ac, char **av)
 {
 	int		i;
 	t_list	*list;

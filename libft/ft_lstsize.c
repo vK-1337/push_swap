@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstsize.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vda-conc <vda-conc@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vk <vk@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/12 23:14:56 by vk                #+#    #+#             */
-/*   Updated: 2023/12/19 16:27:52 by vda-conc         ###   ########.fr       */
+/*   Updated: 2023/12/21 23:41:19 by vk               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	ft_lstsize(t_list *lst)
 {
 	size_t	i;
 
-	if (!lst)
+	if (!lst || lst == NULL)
 		return (0);
 	i = 0;
 	while (lst->next != NULL)
