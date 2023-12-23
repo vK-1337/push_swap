@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lst_utils.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vda-conc <vda-conc@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vk <vk@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 09:48:49 by vda-conc          #+#    #+#             */
-/*   Updated: 2023/12/22 13:12:45 by vda-conc         ###   ########.fr       */
+/*   Updated: 2023/12/23 09:50:58 by vk               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,8 @@ void	ft_swap_rb(t_list **list_b, int is_rr)
 
 	tmp = (*list_b)->next;
 	ft_lstadd_back(list_b, (*list_b));
-  ft_refresh_pos(list_b);
 	*list_b = tmp;
+  ft_refresh_pos(list_b);
 	if (!is_rr)
 		ft_write_instruction("rb\n");
 }
