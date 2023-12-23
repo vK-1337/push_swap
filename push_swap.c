@@ -6,7 +6,7 @@
 /*   By: vda-conc <vda-conc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/07 08:40:29 by vda-conc          #+#    #+#             */
-/*   Updated: 2023/12/22 20:13:03 by vda-conc         ###   ########.fr       */
+/*   Updated: 2023/12/22 20:30:50 by vda-conc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void ft_push_node(t_list *node, t_list *target_node, t_list **list)
 {
-	
+
 }
 
 void ft_push_swap(t_list **list_a)
@@ -29,6 +29,7 @@ void ft_push_swap(t_list **list_a)
 	{
 		node_to_push = ft_best_push(list_a, list_b);
 		ft_push_node();
+		
 	}
 }
 
