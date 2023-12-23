@@ -6,7 +6,7 @@
 /*   By: vda-conc <vda-conc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/07 08:40:32 by vda-conc          #+#    #+#             */
-/*   Updated: 2023/12/23 13:40:06 by vda-conc         ###   ########.fr       */
+/*   Updated: 2023/12/23 17:42:54 by vda-conc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,10 @@ void ft_push_a_node(t_list *node, t_list *target_node, t_list **list_a, t_list *
 int ft_define_target_pos(t_list *node, t_list **list);
 int ft_get_closer_target(t_list *node_to_insert, t_list **list);
 int ft_get_cost_pb(t_list node, t_list target, t_list **node_list, t_list **target_list);
+int ft_get_cost_pa(t_list node, t_list target, t_list **node_list, t_list **target_list);
+
 t_list *ft_best_push_pb(t_list **from_list, t_list **to_list);
+t_list *ft_best_push_pa(t_list **from_list, t_list **to_list);
 
 void	ft_swap_node(t_list *a, t_list *b);
 void	ft_swap_rr(t_list **list_a, t_list **list_b);

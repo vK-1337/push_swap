@@ -6,7 +6,7 @@
 /*   By: vda-conc <vda-conc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/22 13:59:51 by vda-conc          #+#    #+#             */
-/*   Updated: 2023/12/23 11:28:33 by vda-conc         ###   ########.fr       */
+/*   Updated: 2023/12/23 17:39:28 by vda-conc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,9 @@ int	ft_define_target_pos(t_list *node, t_list **list)
 	max_node = ft_get_node(list, ft_find_lst_max_pos(list));
 	min_node = ft_get_node(list, ft_find_lst_min_pos(list));
 	if (node->content > max_node->content || node->content < min_node->content)
+  {
 		target_position = max_node->position;
+  }
 	else
 		target_position = ft_get_closer_target(node, list);
 	return (target_position);
@@ -37,7 +39,9 @@ int	ft_get_closer_target(t_list *node_to_insert, t_list **list)
 	potential_target = *list;
 	min_diff = node_to_insert->index - potential_target->index;
 	target_position = potential_target->position;
-	while (potential_target->next)
+  if (min_diff < 0)
+    min_diff *= -1;
+	while (potential_target)
 	{
 		diff = node_to_insert->index - potential_target->index;
 		if (diff < 0)
