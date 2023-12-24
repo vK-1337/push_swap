@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vda-conc <vda-conc@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vk <vk@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/07 08:40:32 by vda-conc          #+#    #+#             */
-/*   Updated: 2023/12/23 17:42:54 by vda-conc         ###   ########.fr       */
+/*   Updated: 2023/12/24 17:33:41 by vk               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,10 +45,13 @@ void	ft_write_instruction(char *str);
 t_list	*ft_make_list(int ac, char **av);
 void	ft_three_sort_a(t_list **list);
 void	ft_push_swap(t_list **list_a);
-void  ft_push_to_b(t_list **list_a, t_list **list_b);
 void ft_push_a_node(t_list *node, t_list *target_node, t_list **list_a, t_list **list_b);
+t_list *ft_best_push_pa(t_list **from_list, t_list **to_list);
+void ft_final_sort(t_list **list_a);
+
 
 int ft_define_target_pos(t_list *node, t_list **list);
+int	ft_define_target_pos_pb(t_list *node, t_list **list);
 int ft_get_closer_target(t_list *node_to_insert, t_list **list);
 int ft_get_cost_pb(t_list node, t_list target, t_list **node_list, t_list **target_list);
 int ft_get_cost_pa(t_list node, t_list target, t_list **node_list, t_list **target_list);

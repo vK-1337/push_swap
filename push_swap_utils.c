@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap_utils.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vda-conc <vda-conc@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vk <vk@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/22 13:59:51 by vda-conc          #+#    #+#             */
-/*   Updated: 2023/12/23 17:39:28 by vda-conc         ###   ########.fr       */
+/*   Updated: 2023/12/24 15:40:14 by vk               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,21 @@ int	ft_define_target_pos(t_list *node, t_list **list)
   {
 		target_position = max_node->position;
   }
+	else
+		target_position = ft_get_closer_target(node, list);
+	return (target_position);
+}
+
+int	ft_define_target_pos_pb(t_list *node, t_list **list)
+{
+	int		target_position;
+	t_list	*max_node;
+	t_list	*min_node;
+
+	max_node = ft_get_node(list, ft_find_lst_max_pos(list));
+	min_node = ft_get_node(list, ft_find_lst_min_pos(list));
+	if (node->content > max_node->content || node->content < min_node->content)
+		target_position = min_node->position;
 	else
 		target_position = ft_get_closer_target(node, list);
 	return (target_position);
@@ -63,13 +78,14 @@ void	ft_refresh_pos(t_list **list)
 
 	curr = *list;
 	position = 1;
-	curr->position = position;
-	while (curr->next)
+  if (curr)
+	  curr->position = position;
+	while (curr)
 	{
 		position++;
 		curr = curr->next;
-		curr->position = position;
+    if (curr)
+		  curr->position = position;
 	}
-	curr->position = position;
 	return ;
 }
