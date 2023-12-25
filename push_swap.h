@@ -6,7 +6,7 @@
 /*   By: vk <vk@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/07 08:40:32 by vda-conc          #+#    #+#             */
-/*   Updated: 2023/12/24 17:33:41 by vk               ###   ########.fr       */
+/*   Updated: 2023/12/25 00:06:17 by vk               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,7 @@ int ft_get_cost_pa(t_list node, t_list target, t_list **node_list, t_list **targ
 
 t_list *ft_best_push_pb(t_list **from_list, t_list **to_list);
 t_list *ft_best_push_pa(t_list **from_list, t_list **to_list);
+int	ft_define_target_pos_pa(t_list *node, t_list **list);
 
 void	ft_swap_node(t_list *a, t_list *b);
 void	ft_swap_rr(t_list **list_a, t_list **list_b);

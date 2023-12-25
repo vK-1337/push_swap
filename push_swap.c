@@ -6,7 +6,7 @@
 /*   By: vk <vk@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/07 08:40:29 by vda-conc          #+#    #+#             */
-/*   Updated: 2023/12/24 19:18:18 by vk               ###   ########.fr       */
+/*   Updated: 2023/12/25 00:04:37 by vk               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -282,8 +282,8 @@ void ft_push_swap(t_list **list_a)
   ft_three_sort_a(list_a);
   while (ft_lstsize(list_b) > 0)
   {
-    node_to_push = ft_best_push_pb(&list_b, list_a);
-    target_node = ft_get_node(list_a, ft_define_target_pos_pb(node_to_push, list_a));
+    node_to_push = ft_best_push_pa(&list_b, list_a);
+    target_node = ft_get_node(list_a, ft_define_target_pos_pa(node_to_push, list_a));
     ft_push_b_node(node_to_push, target_node, list_a, &list_b);
   }
   ft_final_sort(list_a);

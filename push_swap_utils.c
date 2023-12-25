@@ -6,7 +6,7 @@
 /*   By: vk <vk@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/22 13:59:51 by vda-conc          #+#    #+#             */
-/*   Updated: 2023/12/24 15:40:14 by vk               ###   ########.fr       */
+/*   Updated: 2023/12/25 00:04:14 by vk               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int	ft_define_target_pos(t_list *node, t_list **list)
 	return (target_position);
 }
 
-int	ft_define_target_pos_pb(t_list *node, t_list **list)
+int	ft_define_target_pos_pa(t_list *node, t_list **list)
 {
 	int		target_position;
 	t_list	*max_node;

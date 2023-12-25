@@ -6,7 +6,7 @@
 /*   By: vk <vk@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/16 15:40:19 by vk                #+#    #+#             */
-/*   Updated: 2023/12/24 14:02:07 by vk               ###   ########.fr       */
+/*   Updated: 2023/12/25 00:01:17 by vk               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,63 @@ int ft_get_cost_pb(t_list node, t_list target, t_list **node_list, t_list **targ
   target_list_size = ft_lstsize(*target_list);
 
   if (node.content > target.content)
+  {
+    // Multiple rotates
+    if (node_position < node_list_size / 2 && target_position < target_list_size / 2)
+    {
+      while (node_position > 1 && target_position != target_list_size)
+      {
+        node_position--;
+        target_position--;
+        cost++;
+      }
+    }
+    else if (node_position >= node_list_size / 2 && target_position >= target_list_size / 2)
+    {
+      while (node_position != node_list_size + 1 && target_position != target_list_size)
+      {
+        node_position++;
+        target_position++;
+        cost++;
+      }
+    }
+    // Single rotates
+    // Rotate A
+    if (node_position < node_list_size / 2)
+    {
+      while (node_position > 1)
+      {
+        node_position--;
+        cost++;
+      }
+    }
+    else
+    {
+      while (node_position != node_list_size + 1)
+      {
+        node_position++;
+        cost++;
+      }
+    }
+    // Rotate B
+    if (target_position < node_list_size / 2)
+    {
+      while (target_position >= 1)
+      {
+        target_position--;
+        cost++;
+      }
+    }
+    else
+    {
+      while(target_position != target_list_size)
+      {
+        target_position++;
+        cost++;
+      }
+    }
+  }
+  else
   {
     // Multiple rotates
     if (node_position < node_list_size / 2 && target_position < target_list_size / 2)
@@ -76,63 +133,6 @@ int ft_get_cost_pb(t_list node, t_list target, t_list **node_list, t_list **targ
     else
     {
       while(target_position != target_list_size + 1)
-      {
-        target_position++;
-        cost++;
-      }
-    }
-  }
-  else
-  {
-    // Multiple rotates
-    if (node_position < node_list_size / 2 && target_position < target_list_size / 2)
-    {
-      while (node_position > 1 && target_position >= 1)
-      {
-        node_position--;
-        target_position--;
-        cost++;
-      }
-    }
-    else if (node_position >= node_list_size / 2 && target_position >= target_list_size / 2)
-    {
-      while (node_position != node_list_size + 1 && target_position != target_list_size)
-      {
-        node_position++;
-        target_position++;
-        cost++;
-      }
-    }
-    // Single rotates
-    // Rotate A
-    if (node_position < node_list_size / 2)
-    {
-      while (node_position > 1)
-      {
-        node_position--;
-        cost++;
-      }
-    }
-    else
-    {
-      while (node_position != node_list_size + 1)
-      {
-        node_position++;
-        cost++;
-      }
-    }
-    // Rotate B
-    if (target_position < node_list_size / 2)
-    {
-      while (target_position >= 1)
-      {
-        target_position--;
-        cost++;
-      }
-    }
-    else
-    {
-      while(target_position != target_list_size)
       {
         target_position++;
         cost++;
