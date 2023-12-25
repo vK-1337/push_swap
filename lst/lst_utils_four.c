@@ -6,7 +6,7 @@
 /*   By: vda-conc <vda-conc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/15 23:48:09 by vda-conc          #+#    #+#             */
-/*   Updated: 2023/12/22 12:39:13 by vda-conc         ###   ########.fr       */
+/*   Updated: 2023/12/25 16:47:33 by vda-conc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ int	ft_find_node_content(t_list **list, int position)
 	}
 	return (curr->content);
 }
+
 int	ft_find_lst_max_pos(t_list **list)
 {
 	int		i;
@@ -76,4 +77,24 @@ int	ft_find_lst_min_pos(t_list **list)
 	if (curr->content < min)
 		min_position = i;
 	return (min_position);
+}
+
+t_list	*ft_get_node(t_list **list, int position)
+{
+	t_list	*curr;
+	int		i;
+
+	i = 1;
+	curr = *list;
+	while (i < position)
+	{
+		curr = curr->next;
+		i++;
+	}
+	return (curr);
+}
+
+void	ft_write_instruction(char *str)
+{
+	ft_putstr_fd(str, 1);
 }

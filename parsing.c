@@ -6,7 +6,7 @@
 /*   By: vda-conc <vda-conc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/15 14:58:13 by vda-conc          #+#    #+#             */
-/*   Updated: 2023/12/22 13:33:25 by vda-conc         ###   ########.fr       */
+/*   Updated: 2023/12/25 15:27:00 by vda-conc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,9 +83,9 @@ int	ft_is_same(int ac, char **av)
 		while (j < ac)
 		{
 			if (ft_atol(av[i]) == ft_atol(av[j]))
-      {
+			{
 				return (1);
-      }
+			}
 			j++;
 		}
 		i++;

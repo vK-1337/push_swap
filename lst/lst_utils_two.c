@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lst_utils_two.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vk <vk@student.42.fr>                      +#+  +:+       +#+        */
+/*   By: vda-conc <vda-conc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/15 18:59:43 by vda-conc          #+#    #+#             */
-/*   Updated: 2023/12/23 09:51:20 by vk               ###   ########.fr       */
+/*   Updated: 2023/12/25 16:47:23 by vda-conc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	ft_swap_a(t_list **list)
 	if (*list != NULL && (*list)->next != NULL)
 		ft_swap_node(*list, (*list)->next);
 	*list = (*list)->prev;
-  ft_refresh_pos(list);
+	ft_refresh_pos(list);
 	ft_write_instruction("sa\n");
 }
 
@@ -38,7 +38,7 @@ void	ft_swap_b(t_list **list)
 	if (*list != NULL && (*list)->next != NULL)
 		ft_swap_node(*list, (*list)->next);
 	*list = (*list)->prev;
-  ft_refresh_pos(list);
+	ft_refresh_pos(list);
 	ft_write_instruction("sb\n");
 }
 
@@ -46,8 +46,8 @@ void	ft_swap_ss(t_list **list_a, t_list **list_b)
 {
 	ft_swap_a(list_a);
 	ft_swap_b(list_b);
-  ft_refresh_pos(list_a);
-  ft_refresh_pos(list_b);
+	ft_refresh_pos(list_a);
+	ft_refresh_pos(list_b);
 	ft_write_instruction("ss\n");
 }
 
@@ -58,20 +58,7 @@ void	ft_swap_pb(t_list **list_a, t_list **list_b)
 	tmp = *list_a;
 	*list_a = (*list_a)->next;
 	ft_lstadd_front(list_b, tmp);
-  ft_refresh_pos(list_a);
-  ft_refresh_pos(list_b);
+	ft_refresh_pos(list_a);
+	ft_refresh_pos(list_b);
 	ft_write_instruction("pb\n");
-}
-
-void	ft_write_instruction(char *str)
-{
-	static int	instruction_count;
-
-	if (!str)
-	{
-		ft_putnbr_fd(instruction_count, 2);
-		return ;
-	}
-	ft_putstr_fd(str, 1);
-	instruction_count++;
 }
