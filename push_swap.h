@@ -6,7 +6,7 @@
 /*   By: vda-conc <vda-conc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/07 08:40:32 by vda-conc          #+#    #+#             */
-/*   Updated: 2023/12/26 20:29:46 by vda-conc         ###   ########.fr       */
+/*   Updated: 2023/12/26 20:33:08 by vda-conc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,5 +114,6 @@ void	ft_verify_instruction(char *buffer);
 int		ft_apply_instructions(t_list **list_a, char **instructions);
 void	ft_execute_instruction(char *instruction, t_list **list_a,
 			t_list **list_b);
+
 
 #endif

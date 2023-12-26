@@ -6,7 +6,7 @@
 #    By: vda-conc <vda-conc@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/07 08:40:39 by vda-conc          #+#    #+#              #
-#    Updated: 2023/12/26 19:34:27 by vda-conc         ###   ########.fr        #
+#    Updated: 2023/12/26 20:36:48 by vda-conc         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,6 +38,7 @@ BONUS_SRC =	sort.c \
 						./lst/lst_utils_three.c \
 						./lst/lst_utils_four.c \
 						./lst/lst_utils_five.c \
+						check_instructions.c \
 
 OBJS = $(SRC:.c=.o) ./libft/libft.a
 
@@ -73,7 +74,7 @@ $(BONUS): $(BONUS_OBJS)
 .c.o:
 	$(CC) $(CFLAGS) -c $< -o ${<:.c=.o}
 
-all: $(NAME)
+all: $(NAME) $(BONUS)
 
 bonus: $(NAME) $(BONUS)
 
@@ -81,7 +82,7 @@ clean:
 	rm -f $(OBJS) $(BONUS_OBJS)
 
 fclean: clean
-	rm -f $(NAME) $(BONUS_OBJS)
+	rm -f $(NAME) $(BONUS)
 	$(MAKE) -C ./libft fclean
 
 re: fclean
