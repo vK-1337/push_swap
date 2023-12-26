@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vk <vk@student.42.fr>                      +#+  +:+       +#+        */
+/*   By: vda-conc <vda-conc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/07 08:40:32 by vda-conc          #+#    #+#             */
-/*   Updated: 2023/12/25 00:06:17 by vk               ###   ########.fr       */
+/*   Updated: 2023/12/26 11:01:19 by vda-conc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,11 @@
 # include <stdio.h>
 # include <unistd.h>
 
-typedef struct s_target_info
+typedef struct s_costs_info
 {
-	int	target_pos;
-	int	pos_to_insert;
-}		t_target_info;
+	int	node_list_size;
+	int	target_list_size;
+}		t_costs_info;
 
 int		ft_is_same(int ac, char **av);
 int		ft_parse(int ac, char **av);
@@ -53,8 +53,6 @@ void ft_final_sort(t_list **list_a);
 int ft_define_target_pos(t_list *node, t_list **list);
 int	ft_define_target_pos_pb(t_list *node, t_list **list);
 int ft_get_closer_target(t_list *node_to_insert, t_list **list);
-int ft_get_cost_pb(t_list node, t_list target, t_list **node_list, t_list **target_list);
-int ft_get_cost_pa(t_list node, t_list target, t_list **node_list, t_list **target_list);
 
 t_list *ft_best_push_pb(t_list **from_list, t_list **to_list);
 t_list *ft_best_push_pa(t_list **from_list, t_list **to_list);
