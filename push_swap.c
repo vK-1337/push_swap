@@ -6,7 +6,7 @@
 /*   By: vda-conc <vda-conc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/07 08:40:29 by vda-conc          #+#    #+#             */
-/*   Updated: 2023/12/26 12:52:51 by vda-conc         ###   ########.fr       */
+/*   Updated: 2023/12/26 14:03:33 by vda-conc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,6 @@ void	ft_push_swap(t_list **list_a)
 	t_list	*node_to_push;
 	t_list	*target_node;
 
-	list_b = malloc(sizeof(t_list *));
 	list_b = NULL;
 	ft_push_to_b(list_a, &list_b);
 	ft_three_sort_a(list_a);
@@ -121,5 +120,6 @@ int	main(int ac, char **av)
 		ft_index_list(&list_a);
 		ft_push_swap(&list_a);
 	}
+  ft_free_list(&list_a);
 	return (0);
 }

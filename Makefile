@@ -6,7 +6,7 @@
 #    By: vda-conc <vda-conc@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/07 08:40:39 by vda-conc          #+#    #+#              #
-#    Updated: 2023/12/26 12:55:05 by vda-conc         ###   ########.fr        #
+#    Updated: 2023/12/26 14:29:44 by vda-conc         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,8 +25,6 @@ SRC = sort.c \
 			./lst/lst_utils_five.c \
 
 OBJS = $(SRC:.c=.o) ./libft/libft.a
-
-SORT_OBJS = $(SORT:.c=.o)
 
 NAME = push_swap
 
