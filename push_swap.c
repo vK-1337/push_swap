@@ -6,7 +6,7 @@
 /*   By: vda-conc <vda-conc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/07 08:40:29 by vda-conc          #+#    #+#             */
-/*   Updated: 2023/12/26 14:03:33 by vda-conc         ###   ########.fr       */
+/*   Updated: 2023/12/26 20:29:42 by vda-conc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,6 +120,6 @@ int	main(int ac, char **av)
 		ft_index_list(&list_a);
 		ft_push_swap(&list_a);
 	}
-  ft_free_list(&list_a);
+	ft_free_list(&list_a);
 	return (0);
 }

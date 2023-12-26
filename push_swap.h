@@ -6,7 +6,7 @@
 /*   By: vda-conc <vda-conc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/07 08:40:32 by vda-conc          #+#    #+#             */
-/*   Updated: 2023/12/26 12:56:35 by vda-conc         ###   ########.fr       */
+/*   Updated: 2023/12/26 20:29:46 by vda-conc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,5 +102,17 @@ void	ft_swap_pb(t_list **list_a, t_list **list_b);
 void	ft_swap_rra(t_list **list_a, int is_rrr);
 void	ft_swap_rrb(t_list **list_b, int is_rrr);
 void	ft_swap_rrr(t_list **list_a, t_list **list_b);
+
+// CHECKER //
+void	ft_get_instructions(char **line);
+int		ft_check_swap_instructions(char *buffer);
+int		ft_check_push_instructions(char *buffer);
+int		ft_check_rotate_instructions(char *buffer);
+int		ft_check_reverse_rotate_instructions(char *buffer);
+int		ft_allowed_instruction(char *buffer);
+void	ft_verify_instruction(char *buffer);
+int		ft_apply_instructions(t_list **list_a, char **instructions);
+void	ft_execute_instruction(char *instruction, t_list **list_a,
+			t_list **list_b);
 
 #endif

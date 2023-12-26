@@ -6,7 +6,7 @@
 /*   By: vda-conc <vda-conc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/15 19:01:38 by vda-conc          #+#    #+#             */
-/*   Updated: 2023/12/26 14:03:47 by vda-conc         ###   ########.fr       */
+/*   Updated: 2023/12/26 20:29:32 by vda-conc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,15 +67,14 @@ t_list	*ft_make_list(int ac, char **av)
 
 void	ft_free_list(t_list **list)
 {
-	t_list	*curr;
-	t_list	*prev_temp;
+	t_list	*tmp;
 
-	curr = ft_lstlast(*list);
-	while (curr->prev != NULL)
+	if (!list || !*list)
+		return ;
+	while (*list)
 	{
-		prev_temp = curr->prev;
-		free(curr);
-		curr = prev_temp;
+		tmp = (*list)->next;
+		free(*list);
+		*list = tmp;
 	}
-	free(curr);
 }
