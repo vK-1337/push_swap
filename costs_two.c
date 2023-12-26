@@ -6,7 +6,7 @@
 /*   By: vda-conc <vda-conc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/26 12:29:25 by vda-conc          #+#    #+#             */
-/*   Updated: 2023/12/26 12:30:00 by vda-conc         ###   ########.fr       */
+/*   Updated: 2023/12/26 12:53:24 by vda-conc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ int	ft_get_cost_greater_node(int *node_position, int *target_position,
 		*cost = single_rotate_cost(target_position, target_list_size, cost);
 	return (*cost);
 }
+
 int	ft_get_cost_lower_node(int *node_position, int *target_position, int *cost,
 		t_costs_info infos)
 {
@@ -97,7 +98,7 @@ t_list	*ft_best_push_pa(t_list **from_list, t_list **to_list)
 	best_cost = ft_get_cost_pa(*curr, *ft_get_node(to_list,
 				ft_get_closer_target(curr, to_list)), from_list, to_list);
 	best_node = curr;
-	while (curr->next)
+	while (curr)
 	{
 		curr_cost = ft_get_cost_pa(*curr, *ft_get_node(to_list,
 					ft_get_closer_target(curr, to_list)), from_list, to_list);
@@ -107,13 +108,6 @@ t_list	*ft_best_push_pa(t_list **from_list, t_list **to_list)
 			best_node = curr;
 		}
 		curr = curr->next;
-	}
-	curr_cost = ft_get_cost_pa(*curr, *ft_get_node(to_list,
-				ft_get_closer_target(curr, to_list)), from_list, to_list);
-	if (curr_cost < best_cost)
-	{
-		best_cost = curr_cost;
-		best_node = curr;
 	}
 	return (best_node);
 }

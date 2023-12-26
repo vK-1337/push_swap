@@ -6,14 +6,14 @@
 #    By: vda-conc <vda-conc@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/07 08:40:39 by vda-conc          #+#    #+#              #
-#    Updated: 2023/12/26 12:30:11 by vda-conc         ###   ########.fr        #
+#    Updated: 2023/12/26 12:55:05 by vda-conc         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 SRC = sort.c \
 			costs.c \
-			debug.c \
 			index.c \
+			moves.c \
 			parsing.c \
 			push_swap.c \
 			costs_two.c \

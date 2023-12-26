@@ -6,7 +6,7 @@
 /*   By: vda-conc <vda-conc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/16 15:40:19 by vk                #+#    #+#             */
-/*   Updated: 2023/12/26 12:29:45 by vda-conc         ###   ########.fr       */
+/*   Updated: 2023/12/26 12:46:25 by vda-conc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,5 +72,3 @@ int	single_rotate_cost(int *position, int limit, int *cost)
 	}
 	return (*cost);
 }
-
-

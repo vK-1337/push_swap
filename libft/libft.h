@@ -6,7 +6,7 @@
 /*   By: vda-conc <vda-conc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/14 15:55:04 by vda-conc          #+#    #+#             */
-/*   Updated: 2023/12/22 12:54:03 by vda-conc         ###   ########.fr       */
+/*   Updated: 2023/12/26 12:45:12 by vda-conc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,8 +57,8 @@ void				ft_putnbr_fd(int n, int fd);
 typedef struct s_list
 {
 	int				content;
-  int index;
-  int position;
+	int				index;
+	int				position;
 	struct s_list	*next;
 	struct s_list	*prev;
 }					t_list;
