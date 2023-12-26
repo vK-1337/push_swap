@@ -6,7 +6,7 @@
 #    By: vda-conc <vda-conc@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/07 08:40:39 by vda-conc          #+#    #+#              #
-#    Updated: 2023/12/22 15:18:29 by vda-conc         ###   ########.fr        #
+#    Updated: 2023/12/26 12:30:11 by vda-conc         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,6 +16,7 @@ SRC = sort.c \
 			index.c \
 			parsing.c \
 			push_swap.c \
+			costs_two.c \
 			push_swap_utils.c \
 			./lst/lst_utils.c \
 			./lst/lst_utils_two.c \
