@@ -6,7 +6,7 @@
 /*   By: vda-conc <vda-conc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 11:36:55 by vda-conc          #+#    #+#             */
-/*   Updated: 2023/11/16 11:22:03 by vda-conc         ###   ########.fr       */
+/*   Updated: 2023/12/27 09:43:31 by vda-conc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ int	ft_free_memory(char **tab)
 		free(tab[i]);
 		i++;
 	}
+	free(tab);
 	return (1);
 }
 

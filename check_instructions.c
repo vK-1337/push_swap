@@ -6,7 +6,7 @@
 /*   By: vda-conc <vda-conc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/26 20:32:16 by vda-conc          #+#    #+#             */
-/*   Updated: 2023/12/26 20:32:49 by vda-conc         ###   ########.fr       */
+/*   Updated: 2023/12/27 11:57:13 by vda-conc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,11 +54,12 @@ int	ft_check_reverse_rotate_instructions(char *buffer)
 	return (0);
 }
 
-void	ft_verify_instruction(char *buffer)
+int	ft_verify_instruction(char *buffer)
 {
 	if (!ft_allowed_instruction(buffer))
 	{
 		write(2, "Error\n", 6);
-		exit(0);
+		return (0);
 	}
+	return (1);
 }

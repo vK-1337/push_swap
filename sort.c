@@ -6,7 +6,7 @@
 /*   By: vda-conc <vda-conc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/15 23:09:53 by vda-conc          #+#    #+#             */
-/*   Updated: 2023/12/22 13:58:52 by vda-conc         ###   ########.fr       */
+/*   Updated: 2023/12/27 10:32:44 by vda-conc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,19 +33,19 @@ void	ft_three_sort_a(t_list **list_a)
 	max_position = ft_find_lst_max_pos(list_a);
 	if (max_position == 1)
 	{
-		ft_swap_ra(list_a, 0);
+		ft_swap_ra(list_a, 0, 0);
 		if (!ft_already_sorted(list_a))
-			ft_swap_a(list_a);
+			ft_swap_a(list_a, 0);
 	}
 	if (max_position == 2)
 	{
-		ft_swap_rra(list_a, 0);
+		ft_swap_rra(list_a, 0, 0);
 		if (!ft_already_sorted(list_a))
-			ft_swap_a(list_a);
+			ft_swap_a(list_a, 0);
 	}
 	else
 	{
 		if (!ft_already_sorted(list_a))
-			ft_swap_a(list_a);
+			ft_swap_a(list_a, 0);
 	}
 }

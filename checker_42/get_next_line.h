@@ -6,7 +6,7 @@
 /*   By: vda-conc <vda-conc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/19 16:28:18 by vda-conc          #+#    #+#             */
-/*   Updated: 2023/12/26 20:31:07 by vda-conc         ###   ########.fr       */
+/*   Updated: 2023/12/27 12:01:28 by vda-conc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@
 
 char	*ft_gnl_strdup(char *s);
 int		ft_check_stash(char *str);
-int		get_next_line(int fd, char **line);
+int		get_next_line(int fd, char **line, int error);
 size_t	ft_gnl_strlen(char *str);
 char	*ft_gnl_strjoin(char *s1, char *s2);
 char	*ft_fill_line(char **stash, ssize_t index);

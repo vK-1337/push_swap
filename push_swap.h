@@ -6,7 +6,7 @@
 /*   By: vda-conc <vda-conc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/07 08:40:32 by vda-conc          #+#    #+#             */
-/*   Updated: 2023/12/26 20:33:08 by vda-conc         ###   ########.fr       */
+/*   Updated: 2023/12/27 11:58:05 by vda-conc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ typedef struct s_costs_info
 void	ft_push_swap(t_list **list_a);
 
 // PARSING //
-int		ft_is_same(int ac, char **av);
+int		ft_is_same(int ac, char **av, int multiple_args);
 int		ft_parse(int ac, char **av);
 int		ft_check_validity(char *str);
 int		ft_check_single_arg(char *str);
@@ -91,29 +91,29 @@ void	ft_push_to_a(t_list *node, t_list *target_node, t_list **list_a,
 // INSTRUCTIONS //
 void	ft_write_instruction(char *str);
 void	ft_swap_node(t_list *a, t_list *b);
-void	ft_swap_rr(t_list **list_a, t_list **list_b);
-void	ft_swap_pa(t_list **list_a, t_list **list_b);
-void	ft_swap_ra(t_list **list_a, int is_rr);
-void	ft_swap_rb(t_list **list_b, int is_rr);
-void	ft_swap_a(t_list **list);
-void	ft_swap_b(t_list **list);
-void	ft_swap_ss(t_list **list_a, t_list **list_b);
-void	ft_swap_pb(t_list **list_a, t_list **list_b);
-void	ft_swap_rra(t_list **list_a, int is_rrr);
-void	ft_swap_rrb(t_list **list_b, int is_rrr);
-void	ft_swap_rrr(t_list **list_a, t_list **list_b);
+void	ft_swap_rr(t_list **list_a, t_list **list_b, int is_checker);
+void	ft_swap_pa(t_list **list_a, t_list **list_b, int is_checker);
+void	ft_swap_ra(t_list **list_a, int is_rr, int is_checker);
+void	ft_swap_rb(t_list **list_b, int is_rr, int is_checker);
+void	ft_swap_a(t_list **list, int is_checker);
+void	ft_swap_b(t_list **list, int is_checker);
+void	ft_swap_ss(t_list **list_a, t_list **list_b, int is_checker);
+void	ft_swap_pb(t_list **list_a, t_list **list_b, int is_checker);
+void	ft_swap_rra(t_list **list_a, int is_rrr, int is_checker);
+void	ft_swap_rrb(t_list **list_b, int is_rrr, int is_checker);
+void	ft_swap_rrr(t_list **list_a, t_list **list_b, int is_checker);
 
 // CHECKER //
-void	ft_get_instructions(char **line);
+int		ft_get_instructions(char **line, t_list **list_a);
 int		ft_check_swap_instructions(char *buffer);
 int		ft_check_push_instructions(char *buffer);
 int		ft_check_rotate_instructions(char *buffer);
 int		ft_check_reverse_rotate_instructions(char *buffer);
 int		ft_allowed_instruction(char *buffer);
-void	ft_verify_instruction(char *buffer);
+int		ft_verify_instruction(char *buffer);
 int		ft_apply_instructions(t_list **list_a, char **instructions);
 void	ft_execute_instruction(char *instruction, t_list **list_a,
 			t_list **list_b);
-
+void	ft_get_and_apply_instructions(t_list **list_a);
 
 #endif

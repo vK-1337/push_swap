@@ -6,7 +6,7 @@
 /*   By: vda-conc <vda-conc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/27 18:19:03 by vda-conc          #+#    #+#             */
-/*   Updated: 2023/12/26 15:12:52 by vda-conc         ###   ########.fr       */
+/*   Updated: 2023/12/27 13:43:29 by vda-conc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,12 +96,14 @@ char	*ft_fill_line(char **stash, ssize_t index)
 	return (line);
 }
 
-int	get_next_line(int fd, char **line)
+int	get_next_line(int fd, char **line, int error)
 {
 	char		*buffer;
 	static char	*stash;
 	int			line_index;
 
+	if (error)
+		return (free(stash), 0);
 	buffer = NULL;
 	if (fd < 0 || read(fd, buffer, 0) == -1)
 		return (0);

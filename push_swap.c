@@ -6,7 +6,7 @@
 /*   By: vda-conc <vda-conc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/07 08:40:29 by vda-conc          #+#    #+#             */
-/*   Updated: 2023/12/26 20:29:42 by vda-conc         ###   ########.fr       */
+/*   Updated: 2023/12/27 13:44:33 by vda-conc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,14 +21,14 @@ void	ft_final_sort(t_list **list_a)
 	{
 		while (min_node->position > 1)
 		{
-			ft_swap_ra(list_a, 0);
+			ft_swap_ra(list_a, 0, 0);
 		}
 	}
 	else
 	{
 		while (min_node->position != 1)
 		{
-			ft_swap_rra(list_a, 0);
+			ft_swap_rra(list_a, 0, 0);
 		}
 	}
 }
@@ -42,19 +42,19 @@ void	ft_push_to_b(t_list **list_a, t_list **list_b)
 		&& total_size > 100)
 	{
 		if ((*list_a)->index <= total_size / 3)
-			ft_swap_pb(list_a, list_b);
+			ft_swap_pb(list_a, list_b, 0);
 		else
-			ft_swap_ra(list_a, 0);
+			ft_swap_ra(list_a, 0, 0);
 	}
 	while (ft_lstsize(*list_a) > 3 && ft_lstsize(*list_b) < total_size / 2)
 	{
 		if ((*list_a)->index <= total_size / 2)
-			ft_swap_pb(list_a, list_b);
+			ft_swap_pb(list_a, list_b, 0);
 		else
-			ft_swap_ra(list_a, 0);
+			ft_swap_ra(list_a, 0, 0);
 	}
 	while (ft_lstsize(*list_a) > 3)
-		ft_swap_pb(list_a, list_b);
+		ft_swap_pb(list_a, list_b, 0);
 }
 
 void	ft_push_to_a(t_list *node, t_list *target_node, t_list **list_a,
@@ -79,7 +79,7 @@ void	ft_push_to_a(t_list *node, t_list *target_node, t_list **list_a,
 		ft_multiple_moves_node_greater(&node, &target_node, list_a, list_b);
 		ft_single_move_node_greater(&node, &target_node, list_a, list_b);
 	}
-	ft_swap_pa(list_a, list_b);
+	ft_swap_pa(list_a, list_b, 0);
 }
 
 void	ft_push_swap(t_list **list_a)
@@ -104,6 +104,7 @@ void	ft_push_swap(t_list **list_a)
 int	main(int ac, char **av)
 {
 	t_list	*list_a;
+	char	**list;
 
 	if (ac < 2)
 		return (0);
@@ -112,14 +113,17 @@ int	main(int ac, char **av)
 	if (ac > 2)
 		list_a = ft_make_list(ac, av);
 	else
-		list_a = ft_make_list(ac, ft_split(av[1], ' '));
+	{
+		list = ft_split(av[1], ' ');
+		list_a = ft_make_list(ac, list);
+		ft_free_memory(list);
+	}
 	if (ft_already_sorted(&list_a))
-		return (0);
+		return (ft_free_list(&list_a), 0);
 	else
 	{
 		ft_index_list(&list_a);
 		ft_push_swap(&list_a);
 	}
-	ft_free_list(&list_a);
-	return (0);
+	return (ft_free_list(&list_a), 0);
 }

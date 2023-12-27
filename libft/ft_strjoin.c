@@ -6,13 +6,13 @@
 /*   By: vda-conc <vda-conc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 15:48:27 by vda-conc          #+#    #+#             */
-/*   Updated: 2023/12/07 12:34:29 by vda-conc         ###   ########.fr       */
+/*   Updated: 2023/12/27 09:43:09 by vda-conc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strjoin(char const *s1, char const *s2)
+char	*ft_strjoin(char *s1, char *s2)
 {
 	char	*s3;
 	size_t	i;
@@ -35,5 +35,7 @@ char	*ft_strjoin(char const *s1, char const *s2)
 		s3[i++] = s2[j++];
 	}
 	s3[i] = '\0';
+	free(s1);
+	free(s2);
 	return (s3);
 }

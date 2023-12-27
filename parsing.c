@@ -6,7 +6,7 @@
 /*   By: vda-conc <vda-conc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/15 14:58:13 by vda-conc          #+#    #+#             */
-/*   Updated: 2023/12/26 12:46:39 by vda-conc         ###   ########.fr       */
+/*   Updated: 2023/12/27 13:34:45 by vda-conc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,11 +43,18 @@ int	ft_check_single_arg(char *str)
 	{
 		nbr = ft_atol(tab[i]);
 		if (nbr > 2147483647 || nbr < -2147483648)
+		{
+			ft_free_memory(tab);
 			return (0);
+		}
 		i++;
 	}
-	if (i == 1 || ft_is_same(i, tab))
+	if (ft_is_same(i, tab, 0))
+	{
+		ft_free_memory(tab);
 		return (0);
+	}
+	ft_free_memory(tab);
 	return (1);
 }
 
@@ -66,17 +73,20 @@ int	ft_check_multiple_args(int ac, char **av)
 			return (0);
 		i++;
 	}
-	if (ft_is_same(ac, av))
+	if (ft_is_same(ac, av, 1))
 		return (0);
 	return (1);
 }
 
-int	ft_is_same(int ac, char **av)
+int	ft_is_same(int ac, char **av, int multiple_args)
 {
 	int	i;
 	int	j;
 
-	i = 1;
+	if (multiple_args)
+		i = 1;
+	else
+		i = 0;
 	while (i < ac)
 	{
 		j = i + 1;
