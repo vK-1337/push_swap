@@ -6,7 +6,7 @@
 /*   By: vda-conc <vda-conc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/07 08:40:32 by vda-conc          #+#    #+#             */
-/*   Updated: 2023/12/27 11:58:05 by vda-conc         ###   ########.fr       */
+/*   Updated: 2023/12/29 13:19:36 by vda-conc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,10 +46,12 @@ void	ft_free_list(t_list **list);
 t_list	*ft_get_next_min(t_list **list, t_list *previous_min_node);
 int		ft_get_first_min(t_list **list, t_list *previous_min_node);
 void	ft_index_list(t_list **list);
+void ft_define_node_group(t_list *node, t_list **list);
+int ft_highest_group(t_list **list_b);
 
 // SORT //
 void	ft_three_sort_a(t_list **list);
-t_list	*ft_best_push_pa(t_list **from_list, t_list **to_list);
+t_list	*ft_best_push_pa(t_list **from_list, t_list **to_list, int groups);
 void	ft_final_sort(t_list **list_a);
 
 // TARGETS //
@@ -58,7 +60,7 @@ int		ft_define_target_pos_pb(t_list *node, t_list **list);
 int		ft_get_closer_target(t_list *node_to_insert, t_list **list);
 int		ft_define_target_pos_pa(t_list *node, t_list **list);
 t_list	*ft_best_push_pb(t_list **from_list, t_list **to_list);
-t_list	*ft_best_push_pa(t_list **from_list, t_list **to_list);
+t_list	*ft_best_push_pa(t_list **from_list, t_list **to_list, int group);
 
 // COSTS //
 int		ft_get_cost_greater_node(int *node_position, int *target_position,

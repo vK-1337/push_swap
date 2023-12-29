@@ -6,7 +6,7 @@
 /*   By: vda-conc <vda-conc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/26 12:29:25 by vda-conc          #+#    #+#             */
-/*   Updated: 2023/12/26 12:53:24 by vda-conc         ###   ########.fr       */
+/*   Updated: 2023/12/29 13:18:48 by vda-conc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,7 @@ int	ft_get_cost_pa(t_list node, t_list target, t_list **node_list,
 	return (cost);
 }
 
-t_list	*ft_best_push_pa(t_list **from_list, t_list **to_list)
+t_list	*ft_best_push_pa(t_list **from_list, t_list **to_list, int group)
 {
 	t_list	*curr;
 	t_list	*best_node;
@@ -102,12 +102,16 @@ t_list	*ft_best_push_pa(t_list **from_list, t_list **to_list)
 	{
 		curr_cost = ft_get_cost_pa(*curr, *ft_get_node(to_list,
 					ft_get_closer_target(curr, to_list)), from_list, to_list);
-		if (curr_cost < best_cost)
+		if (curr_cost < best_cost && curr->group == group)
 		{
 			best_cost = curr_cost;
 			best_node = curr;
 		}
 		curr = curr->next;
-	}
+  }
 	return (best_node);
 }
+
+// Traiter les noeuds par groupe
+// D'abord groupe 6, puis groupe 5 etc selon le nombre de groupes
+// pour chaque groupe, definir la target de chaque noeud et le meilleur cout;

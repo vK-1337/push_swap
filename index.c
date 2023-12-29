@@ -6,7 +6,7 @@
 /*   By: vda-conc <vda-conc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/22 12:38:45 by vda-conc          #+#    #+#             */
-/*   Updated: 2023/12/26 12:46:48 by vda-conc         ###   ########.fr       */
+/*   Updated: 2023/12/29 11:50:08 by vda-conc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,12 +73,33 @@ void	ft_index_list(t_list **list)
 	min_position = ft_find_lst_min_pos(list);
 	min_node = ft_get_node(list, min_position);
 	min_node->index = i;
+  min_node->group = 1;
 	while (i != lst_size)
 	{
 		i++;
 		next_min = ft_get_next_min(list, min_node);
 		next_min->index = i;
+    ft_define_node_group(next_min, list);
 		min_node = next_min;
 	}
 	ft_refresh_pos(list);
+}
+void ft_define_node_group(t_list *node, t_list **list)
+{
+  int total_size;
+  int group;
+  int divider;
+
+  group = 1;
+  total_size = ft_lstsize(*list);
+  if (total_size > 100)
+    divider = 6;
+  else
+    divider = 3;
+  while (!node->group)
+  {
+    if (node->index < (total_size * group) / divider || group == divider)
+      node->group = group;
+    group++;
+  }
 }
