@@ -6,7 +6,7 @@
 /*   By: vda-conc <vda-conc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/26 12:29:25 by vda-conc          #+#    #+#             */
-/*   Updated: 2023/12/29 13:18:48 by vda-conc         ###   ########.fr       */
+/*   Updated: 2023/12/29 15:24:39 by vda-conc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,7 +102,7 @@ t_list	*ft_best_push_pa(t_list **from_list, t_list **to_list, int group)
 	{
 		curr_cost = ft_get_cost_pa(*curr, *ft_get_node(to_list,
 					ft_get_closer_target(curr, to_list)), from_list, to_list);
-		if (curr_cost < best_cost && curr->group == group)
+		if (curr_cost < best_cost && (curr->group == group || curr->group == group + 1))
 		{
 			best_cost = curr_cost;
 			best_node = curr;

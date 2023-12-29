@@ -6,7 +6,7 @@
 /*   By: vda-conc <vda-conc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/07 08:40:32 by vda-conc          #+#    #+#             */
-/*   Updated: 2023/12/29 13:19:36 by vda-conc         ###   ########.fr       */
+/*   Updated: 2023/12/29 17:57:22 by vda-conc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,8 +46,9 @@ void	ft_free_list(t_list **list);
 t_list	*ft_get_next_min(t_list **list, t_list *previous_min_node);
 int		ft_get_first_min(t_list **list, t_list *previous_min_node);
 void	ft_index_list(t_list **list);
-void ft_define_node_group(t_list *node, t_list **list);
-int ft_highest_group(t_list **list_b);
+void	ft_define_node_group(t_list *node, t_list **list);
+int		ft_highest_group(t_list **list_b);
+int		ft_lowest_group(t_list **list);
 
 // SORT //
 void	ft_three_sort_a(t_list **list);
@@ -86,9 +87,12 @@ void	ft_single_move_node_lesser(t_list **node, t_list **target_node,
 			t_list **list_a, t_list **list_b);
 void	ft_single_move_node_greater(t_list **node, t_list **target_node,
 			t_list **list_a, t_list **list_b);
-void	ft_push_to_b(t_list **list_a, t_list **list_b);
+void	ft_push_to_b(t_list **list_a, t_list **list_b, int total_size,
+			int groups);
 void	ft_push_to_a(t_list *node, t_list *target_node, t_list **list_a,
 			t_list **list_b);
+void	ft_push_by_group(t_list **list_a, t_list **list_b, int groups,
+			int total_size);
 
 // INSTRUCTIONS //
 void	ft_write_instruction(char *str);
