@@ -6,13 +6,13 @@
 /*   By: vda-conc <vda-conc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 09:48:49 by vda-conc          #+#    #+#             */
-/*   Updated: 2023/12/27 13:01:16 by vda-conc         ###   ########.fr       */
+/*   Updated: 2023/12/30 15:54:03 by vda-conc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-void	ft_swap_pa(t_list **list_a, t_list **list_b, int is_checker)
+void	ft_swap_pa(t_list **list_a, t_list **list_b, int is_checker,char **instructions)
 {
 	t_list	*tmp;
 
@@ -24,10 +24,10 @@ void	ft_swap_pa(t_list **list_a, t_list **list_b, int is_checker)
 	ft_refresh_pos(list_a);
 	ft_refresh_pos(list_b);
 	if (!is_checker)
-		ft_write_instruction("pa\n");
+		ft_write_instruction("pa\n", instructions);
 }
 
-void	ft_swap_ra(t_list **list_a, int is_rr, int is_checker)
+void	ft_swap_ra(t_list **list_a, int is_rr, int is_checker, char **instructions)
 {
 	t_list	*tmp;
 
@@ -38,10 +38,10 @@ void	ft_swap_ra(t_list **list_a, int is_rr, int is_checker)
 	*list_a = tmp;
 	ft_refresh_pos(list_a);
 	if (!is_rr && !is_checker)
-		ft_write_instruction("ra\n");
+		ft_write_instruction("ra\n", instructions);
 }
 
-void	ft_swap_rb(t_list **list_b, int is_rr, int is_checker)
+void	ft_swap_rb(t_list **list_b, int is_rr, int is_checker,char **instructions)
 {
 	t_list	*tmp;
 
@@ -52,17 +52,17 @@ void	ft_swap_rb(t_list **list_b, int is_rr, int is_checker)
 	*list_b = tmp;
 	ft_refresh_pos(list_b);
 	if (!is_rr && !is_checker)
-		ft_write_instruction("rb\n");
+		ft_write_instruction("rb\n", instructions);
 }
 
-void	ft_swap_rr(t_list **list_a, t_list **list_b, int is_checker)
+void	ft_swap_rr(t_list **list_a, t_list **list_b, int is_checker,char **instructions)
 {
 	if (!*list_a || !*list_b)
 		return ;
-	ft_swap_ra(list_a, 1, 0);
-	ft_swap_rb(list_b, 1, 0);
+	ft_swap_ra(list_a, 1, 0, instructions);
+	ft_swap_rb(list_b, 1, 0, instructions);
 	ft_refresh_pos(list_a);
 	ft_refresh_pos(list_b);
 	if (!is_checker)
-		ft_write_instruction("rr\n");
+		ft_write_instruction("rr\n", instructions);
 }

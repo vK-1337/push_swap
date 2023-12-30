@@ -6,7 +6,7 @@
 /*   By: vda-conc <vda-conc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/15 23:48:09 by vda-conc          #+#    #+#             */
-/*   Updated: 2023/12/26 12:49:52 by vda-conc         ###   ########.fr       */
+/*   Updated: 2023/12/30 10:45:21 by vda-conc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,8 +78,14 @@ int	ft_find_lst_min_pos(t_list **list)
 		min_position = i;
 	return (min_position);
 }
-
-void	ft_write_instruction(char *str)
-{
-	ft_putstr_fd(str, 1);
+void ft_write_instruction(char *str, char **instructions) {
+    if (!instructions) {
+        return;
+    }
+    if (*instructions == NULL) {
+        *instructions = ft_strdup(str);
+    } else {
+        char *temp = ft_strjoin(*instructions, str);
+        *instructions = temp;
+    }
 }

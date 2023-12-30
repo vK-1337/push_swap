@@ -50,7 +50,7 @@ SORT_OBJS  = $(SORT:.c=.o)
 
 NAME = libft.a
 
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -g3
 
 GREEN = \033[0;32m
 NC = \033[0m

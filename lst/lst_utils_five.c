@@ -6,7 +6,7 @@
 /*   By: vda-conc <vda-conc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/22 09:18:09 by vda-conc          #+#    #+#             */
-/*   Updated: 2023/12/26 12:46:00 by vda-conc         ###   ########.fr       */
+/*   Updated: 2023/12/30 11:33:55 by vda-conc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,4 +25,8 @@ t_list	*ft_get_node(t_list **list, int position)
 		i++;
 	}
 	return (curr);
+}
+void	ft_write_instruction_output(char *str)
+{
+  ft_putstr_fd(str, 1);
 }

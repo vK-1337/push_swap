@@ -6,7 +6,7 @@
 /*   By: vda-conc <vda-conc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/07 08:40:29 by vda-conc          #+#    #+#             */
-/*   Updated: 2023/12/29 18:52:24 by vda-conc         ###   ########.fr       */
+/*   Updated: 2023/12/30 18:53:07 by vda-conc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void	ft_print_list(t_list **list)
 	}
 }
 
-void	ft_final_sort(t_list **list_a)
+void	ft_final_sort(t_list **list_a, char **instructions)
 {
 	t_list	*min_node;
 
@@ -44,72 +44,96 @@ void	ft_final_sort(t_list **list_a)
 	{
 		while (min_node->position > 1)
 		{
-			ft_swap_ra(list_a, 0, 0);
+			ft_swap_ra(list_a, 0, 0, instructions);
 		}
 	}
 	else
 	{
 		while (min_node->position != 1)
 		{
-			ft_swap_rra(list_a, 0, 0);
+			ft_swap_rra(list_a, 0, 0, instructions);
 		}
 	}
 }
 
 void	ft_push_to_b(t_list **list_a, t_list **list_b, int total_size,
-		int groups)
+		int groups, char **instructions)
 {
 	while (ft_lstsize(*list_b) < 2 && ft_lstsize(*list_a) > 3)
 	{
 		if ((*list_a)->group == 1)
-			ft_swap_pb(list_a, list_b, 0);
+			ft_swap_pb(list_a, list_b, 0, instructions);
 		else if ((*list_a)->group == 2)
 		{
-			ft_swap_pb(list_a, list_b, 0);
+			ft_swap_pb(list_a, list_b, 0, instructions);
 			if (ft_lowest_group(list_b) == 1)
-				ft_swap_rb(list_b, 0, 0);
+				ft_swap_rb(list_b, 0, 0, instructions);
 		}
 		else
-				ft_swap_ra(list_a, 0, 0);
+				ft_swap_ra(list_a, 0, 0, instructions);
 	}
-	while (ft_lstsize(*list_a) > 3)
-		ft_push_by_group(list_a, list_b, groups, total_size);
+  if (total_size)
+    while ((ft_lstsize(*list_a)) > 3)
+      ft_pb_by_three_groups(list_a, list_b, groups, total_size, instructions);
+  // else
+  //   while ((ft_lstsize((*list_a)) > 3))
+  //     ft_pb_by_six_groups(list_a, list_b, groups, total_size, instructions);
 }
 
-void	ft_push_by_group(t_list **list_a, t_list **list_b, int groups,
-		int total_size)
+
+// void ft_pb_by_six_groups(t_list **list_a, t_list **list_b, int groups,
+// 		int total_size, char **instructions)
+// {
+//   while (ft_lowest_group(list_a) == 1)
+//     ft_pb_by_three_groups(list_a, list_b, groups, total_size, instructions);
+//   while (ft_lowest_group(list_a) == 2)
+
+// }
+
+
+
+void ft_push_by_group(t_list **list_a, t_list **list_b, char **instructions)
 {
+  int lowest_group;
+
+  lowest_group = ft_lowest_group(list_a);
+  if (lowest_group == ft_highest_group(list_a))
+    ft_swap_pb(list_a, list_b, 0, instructions);
+  else if ((*list_a)->group == lowest_group || (*list_a)->group == lowest_group + 1)
+  {
+    ft_swap_pb(list_a, list_b, 0, instructions);
+    if ((*list_b)->group == lowest_group + 1 && (*list_a)->group == lowest_group + 2)
+      ft_swap_rr(list_a, list_b, 0, instructions);
+    else if ((*list_b)->group != lowest_group)
+      ft_swap_rb(list_b, 0, 0, instructions);
+  }
+  else if ((*list_a)->group >= lowest_group + 2)
+  {
+  	if ((*list_b)->group == lowest_group + 1)
+			ft_swap_rr(list_a, list_b, 0, instructions);
+		else
+			ft_swap_ra(list_a, 0, 0, instructions);
+  }
+}
+void	ft_pb_by_three_groups(t_list **list_a, t_list **list_b, int groups,
+		int total_size, char **instructions)
+{
+  // Mettre total size et groups dans une struct
 	static int	multiplier = 1;
-	while (ft_lstsize(*list_b) <= (total_size * multiplier) / groups && ft_lstsize(*list_a) > 3)
+
+  if (multiplier > ft_highest_group(list_a))
+  {
+    multiplier = 1;
+  }
+	while (ft_lstsize(*list_b) <= (total_size * multiplier) / groups && ft_lstsize(*list_a) > 3 && multiplier < 7)
 	{
-		if (ft_lowest_group(list_a) == groups)
-		{
-			ft_swap_pb(list_a, list_b, 0);
-			continue;
-		}
-		else if ((*list_a)->group == 3)
-		{
-			if ((*list_b)->group == 2)
-				ft_swap_rr(list_a, list_b, 0);
-			else
-				ft_swap_ra(list_a, 0, 0);
-		}
-		else if ((*list_a)->group == 2)
-		{
-			ft_swap_pb(list_a, list_b, 0);
-			if ((*list_b)->group == 2 && (*list_a)->group == 3)
-				ft_swap_rr(list_a, list_b, 0);
-			else
-			ft_swap_rb(list_b, 0, 0);
-		}
-		else if ((*list_a)->group == 1)
-			ft_swap_pb(list_a, list_b, 0);
+		ft_push_by_group(list_a, list_b, instructions);
 	}
 	multiplier++;
 }
 
 void	ft_push_to_a(t_list *node, t_list *target_node, t_list **list_a,
-		t_list **list_b)
+		t_list **list_b, char **instructions)
 {
 	t_list	*list_min;
 	t_list	*list_max;
@@ -122,39 +146,127 @@ void	ft_push_to_a(t_list *node, t_list *target_node, t_list **list_a,
 		target_is_min = 1;
 	if (node->content < target_node->content || target_is_min == 1)
 	{
-		ft_multiple_moves_node_lesser(&node, &target_node, list_a, list_b);
-		ft_single_move_node_lesser(&node, &target_node, list_a, list_b);
+		ft_multiple_moves_node_lesser(&node, &target_node, list_a, list_b, instructions);
+		ft_single_move_node_lesser(&node, &target_node, list_a, list_b, instructions);
 	}
 	else
 	{
-		ft_multiple_moves_node_greater(&node, &target_node, list_a, list_b);
-		ft_single_move_node_greater(&node, &target_node, list_a, list_b);
+		ft_multiple_moves_node_greater(&node, &target_node, list_a, list_b, instructions);
+		ft_single_move_node_greater(&node, &target_node, list_a, list_b, instructions);
 	}
-	ft_swap_pa(list_a, list_b, 0);
+	ft_swap_pa(list_a, list_b, 0, instructions);
 }
 
-void	ft_push_swap(t_list **list_a)
+char *ft_push_swap(t_list **list_a, int iteration)
 {
 	t_list	*list_b;
 	t_list	*node_to_push;
 	t_list	*target_node;
 	int		group;
 	int		total_size;
+  char *instructions = NULL;
+  int i;
 
 	total_size = ft_lstsize(*list_a);
 	group = ft_highest_group(list_a);
 	list_b = NULL;
-	ft_push_to_b(list_a, &list_b, total_size, group);
-	ft_three_sort_a(list_a);
+  i = 0;
+  while (i < iteration)
+  {
+    ft_swap_ra(list_a, 0, 0, &instructions);
+    i++;
+  }
+	ft_push_to_b(list_a, &list_b, total_size, group, &instructions);
+	ft_three_sort_a(list_a, &instructions);
 	while (ft_lstsize(list_b) > 0)
 	{
 		node_to_push = ft_best_push_pa(&list_b, list_a, group);
 		target_node = ft_get_node(list_a, ft_define_target_pos_pa(node_to_push,
 					list_a));
-		ft_push_to_a(node_to_push, target_node, list_a, &list_b);
+		ft_push_to_a(node_to_push, target_node, list_a, &list_b, &instructions);
 		group = ft_highest_group(&list_b);
 	}
-	ft_final_sort(list_a);
+	ft_final_sort(list_a, &instructions);
+  ft_free_list(&list_b);
+  return(instructions);
+}
+
+char *ft_brute_force(t_list *list_a)
+{
+  int iteration;
+  char *best_instructions;
+  t_list *list_copy;
+  int best_instructions_score;
+  char *curr_iteration_instructions;
+  int curr_iteration_score;
+  int total_size;
+
+  iteration = 0;
+  total_size = ft_lstsize(list_a);
+  list_copy = ft_copy_list(list_a);
+  best_instructions = ft_push_swap(&list_copy, iteration);
+  best_instructions_score = ft_count_instructions(best_instructions);
+  while (++iteration < 100)
+  {
+    list_copy = ft_copy_list(list_a);
+    curr_iteration_instructions = ft_push_swap(&list_copy, iteration);
+    curr_iteration_score = ft_count_instructions(curr_iteration_instructions);
+    if (best_instructions_score > ft_count_instructions(curr_iteration_instructions))
+    {
+      best_instructions = curr_iteration_instructions;
+      best_instructions_score = curr_iteration_score;
+    }
+    ft_free_list(&list_copy);
+  }
+  return (best_instructions);
+}
+
+t_list *ft_copy_list(t_list *src)
+{
+    t_list *head;
+    t_list *current;
+
+    head = NULL;
+    current = NULL;
+    while (src != NULL) {
+        t_list *new_node = (t_list *)malloc(sizeof(t_list));
+        if (!new_node)
+          return (NULL);
+        ft_copy_node(src, new_node);
+        if (head == NULL) {
+            head = new_node;
+            current = new_node;
+        } else {
+            current->next = new_node;
+            current = new_node;
+        }
+        src = src->next;
+    }
+    return (head);
+}
+
+void ft_copy_node(t_list *src_node, t_list *copy)
+{
+  if (!src_node || !copy)
+    return;
+  copy->content = src_node->content;
+  copy->group = src_node->group;
+  copy->index = src_node->index;
+  copy->position = src_node->position;
+  copy->prev = src_node->prev;
+  copy->next = NULL;
+}
+
+int ft_count_instructions(char *instructions)
+{
+  char **final_tab;
+  int i;
+
+  final_tab = ft_split(instructions, '\n');
+  i = 0;
+  while (final_tab[i])
+    i++;
+  return (i);
 }
 
 int	ft_highest_group(t_list **list_b)
@@ -193,6 +305,7 @@ int	main(int ac, char **av)
 {
 	t_list	*list_a;
 	char	**list;
+  char *best_instructions;
 
 	if (ac < 2)
 		return (0);
@@ -211,8 +324,8 @@ int	main(int ac, char **av)
 	else
 	{
 		ft_index_list(&list_a);
-		ft_push_swap(&list_a);
+		best_instructions = ft_brute_force(list_a);
 	}
-	// ft_print_list(&list_a);
+  printf("%s", best_instructions);
 	return (ft_free_list(&list_a), 0);
 }
