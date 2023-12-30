@@ -6,7 +6,7 @@
 /*   By: vda-conc <vda-conc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/14 15:55:04 by vda-conc          #+#    #+#             */
-/*   Updated: 2023/12/27 09:30:24 by vda-conc         ###   ########.fr       */
+/*   Updated: 2023/12/29 11:32:26 by vda-conc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,7 @@ typedef struct s_list
 	int				content;
 	int				index;
 	int				position;
+  int       group;
 	struct s_list	*next;
 	struct s_list	*prev;
 }					t_list;

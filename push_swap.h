@@ -6,7 +6,7 @@
 /*   By: vda-conc <vda-conc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/07 08:40:32 by vda-conc          #+#    #+#             */
-/*   Updated: 2023/12/27 11:58:05 by vda-conc         ###   ########.fr       */
+/*   Updated: 2023/12/30 15:41:34 by vda-conc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ typedef struct s_costs_info
 }		t_costs_info;
 
 // MAIN FUNCTION //
-void	ft_push_swap(t_list **list_a);
+char	*ft_push_swap(t_list **list_a, int iteration);
 
 // PARSING //
 int		ft_is_same(int ac, char **av, int multiple_args);
@@ -41,16 +41,21 @@ t_list	*ft_make_list(int ac, char **av);
 t_list	*ft_get_node(t_list **list, int position);
 void	ft_refresh_pos(t_list **list);
 void	ft_free_list(t_list **list);
+t_list	*ft_copy_list(t_list *src);
+void	ft_copy_node(t_list *src_node, t_list *copy);
 
 // INDEXS //
 t_list	*ft_get_next_min(t_list **list, t_list *previous_min_node);
 int		ft_get_first_min(t_list **list, t_list *previous_min_node);
 void	ft_index_list(t_list **list);
+void	ft_define_node_group(t_list *node, t_list **list);
+int		ft_highest_group(t_list **list_b);
+int		ft_lowest_group(t_list **list);
 
 // SORT //
-void	ft_three_sort_a(t_list **list);
-t_list	*ft_best_push_pa(t_list **from_list, t_list **to_list);
-void	ft_final_sort(t_list **list_a);
+void	ft_three_sort_a(t_list **list, char **instructions);
+t_list	*ft_best_push_pa(t_list **from_list, t_list **to_list, int groups);
+void	ft_final_sort(t_list **list_a, char **instructions);
 
 // TARGETS //
 int		ft_define_target_pos(t_list *node, t_list **list);
@@ -58,7 +63,7 @@ int		ft_define_target_pos_pb(t_list *node, t_list **list);
 int		ft_get_closer_target(t_list *node_to_insert, t_list **list);
 int		ft_define_target_pos_pa(t_list *node, t_list **list);
 t_list	*ft_best_push_pb(t_list **from_list, t_list **to_list);
-t_list	*ft_best_push_pa(t_list **from_list, t_list **to_list);
+t_list	*ft_best_push_pa(t_list **from_list, t_list **to_list, int group);
 
 // COSTS //
 int		ft_get_cost_greater_node(int *node_position, int *target_position,
@@ -77,31 +82,46 @@ int		multiple_rotates_up_greater(int *position1, int *position2, int *cost);
 
 // MOVES //
 void	ft_multiple_moves_node_greater(t_list **node, t_list **target_node,
-			t_list **list_a, t_list **list_b);
+			t_list **list_a, t_list **list_b, char **instructions);
 void	ft_multiple_moves_node_lesser(t_list **node, t_list **target_node,
-			t_list **list_a, t_list **list_b);
+			t_list **list_a, t_list **list_b, char **instructions);
 void	ft_single_move_node_lesser(t_list **node, t_list **target_node,
-			t_list **list_a, t_list **list_b);
+			t_list **list_a, t_list **list_b, char **instructions);
 void	ft_single_move_node_greater(t_list **node, t_list **target_node,
-			t_list **list_a, t_list **list_b);
-void	ft_push_to_b(t_list **list_a, t_list **list_b);
+			t_list **list_a, t_list **list_b, char **instructions);
+void	ft_push_to_b(t_list **list_a, t_list **list_b, int total_size,
+			int groups, char **instructions);
 void	ft_push_to_a(t_list *node, t_list *target_node, t_list **list_a,
-			t_list **list_b);
+			t_list **list_b, char **instructions);
+void	ft_pb_by_three_groups(t_list **list_a, t_list **list_b, int groups,
+			int total_size, char **instructions);
+void	ft_push_by_group(t_list **list_a, t_list **list_b, char **instructions);
 
 // INSTRUCTIONS //
-void	ft_write_instruction(char *str);
+void	ft_write_instruction(char *str, char **instructions);
+void	ft_write_instruction_output(char *str);
 void	ft_swap_node(t_list *a, t_list *b);
-void	ft_swap_rr(t_list **list_a, t_list **list_b, int is_checker);
-void	ft_swap_pa(t_list **list_a, t_list **list_b, int is_checker);
-void	ft_swap_ra(t_list **list_a, int is_rr, int is_checker);
-void	ft_swap_rb(t_list **list_b, int is_rr, int is_checker);
-void	ft_swap_a(t_list **list, int is_checker);
-void	ft_swap_b(t_list **list, int is_checker);
-void	ft_swap_ss(t_list **list_a, t_list **list_b, int is_checker);
-void	ft_swap_pb(t_list **list_a, t_list **list_b, int is_checker);
-void	ft_swap_rra(t_list **list_a, int is_rrr, int is_checker);
-void	ft_swap_rrb(t_list **list_b, int is_rrr, int is_checker);
-void	ft_swap_rrr(t_list **list_a, t_list **list_b, int is_checker);
+void	ft_swap_rr(t_list **list_a, t_list **list_b, int is_checker,
+			char **instructions);
+void	ft_swap_pa(t_list **list_a, t_list **list_b, int is_checker,
+			char **instructions);
+void	ft_swap_ra(t_list **list_a, int is_rr, int is_checker,
+			char **instructions);
+void	ft_swap_rb(t_list **list_b, int is_rr, int is_checker,
+			char **instructions);
+void	ft_swap_a(t_list **list, int is_checker, char **instructions);
+void	ft_swap_b(t_list **list, int is_checker, char **instructions);
+void	ft_swap_ss(t_list **list_a, t_list **list_b, int is_checker,
+			char **instructions);
+void	ft_swap_pb(t_list **list_a, t_list **list_b, int is_checker,
+			char **instructions);
+void	ft_swap_rra(t_list **list_a, int is_rrr, int is_checker,
+			char **instructions);
+void	ft_swap_rrb(t_list **list_b, int is_rrr, int is_checker,
+			char **instructions);
+void	ft_swap_rrr(t_list **list_a, t_list **list_b, int is_checker,
+			char **instructions);
+int		ft_count_instructions(char *instructions);
 
 // CHECKER //
 int		ft_get_instructions(char **line, t_list **list_a);

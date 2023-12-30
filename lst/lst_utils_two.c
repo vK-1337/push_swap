@@ -6,7 +6,7 @@
 /*   By: vda-conc <vda-conc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/15 18:59:43 by vda-conc          #+#    #+#             */
-/*   Updated: 2023/12/27 13:43:41 by vda-conc         ###   ########.fr       */
+/*   Updated: 2023/12/30 13:26:57 by vda-conc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void	ft_swap_node(t_list *a, t_list *b)
 	a->prev = b;
 }
 
-void	ft_swap_a(t_list **list, int is_checker)
+void	ft_swap_a(t_list **list, int is_checker, char **instructions)
 {
 	if (!*list || ft_lstsize(*list) < 2)
 		return ;
@@ -40,10 +40,12 @@ void	ft_swap_a(t_list **list, int is_checker)
 	*list = (*list)->prev;
 	ft_refresh_pos(list);
 	if (!is_checker)
-		ft_write_instruction("sa\n");
+  {
+		ft_write_instruction("sa\n", instructions);
+  }
 }
 
-void	ft_swap_b(t_list **list, int is_checker)
+void	ft_swap_b(t_list **list, int is_checker, char **instructions)
 {
 	if (!*list || ft_lstsize(*list) < 2)
 		return ;
@@ -52,22 +54,26 @@ void	ft_swap_b(t_list **list, int is_checker)
 	*list = (*list)->prev;
 	ft_refresh_pos(list);
 	if (!is_checker)
-		ft_write_instruction("sb\n");
+  {
+		ft_write_instruction("sb\n", instructions);
+  }
 }
 
-void	ft_swap_ss(t_list **list_a, t_list **list_b, int is_checker)
+void	ft_swap_ss(t_list **list_a, t_list **list_b, int is_checker, char **instructions)
 {
 	if (!*list_a || !*list_b)
 		return ;
-	ft_swap_a(list_a, 0);
-	ft_swap_b(list_b, 0);
+	ft_swap_a(list_a, 0, instructions);
+	ft_swap_b(list_b, 0, instructions);
 	ft_refresh_pos(list_a);
 	ft_refresh_pos(list_b);
 	if (!is_checker)
-		ft_write_instruction("ss\n");
+  {
+		ft_write_instruction("ss\n", instructions);
+  }
 }
 
-void	ft_swap_pb(t_list **list_a, t_list **list_b, int is_checker)
+void	ft_swap_pb(t_list **list_a, t_list **list_b, int is_checker, char **instructions)
 {
 	t_list	*tmp;
 
@@ -79,5 +85,7 @@ void	ft_swap_pb(t_list **list_a, t_list **list_b, int is_checker)
 	ft_refresh_pos(list_a);
 	ft_refresh_pos(list_b);
 	if (!is_checker)
-		ft_write_instruction("pb\n");
+  {
+    ft_write_instruction("pb\n", instructions);
+  }
 }

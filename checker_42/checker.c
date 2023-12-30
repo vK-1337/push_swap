@@ -6,7 +6,7 @@
 /*   By: vda-conc <vda-conc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/26 14:07:30 by vda-conc          #+#    #+#             */
-/*   Updated: 2023/12/27 13:43:34 by vda-conc         ###   ########.fr       */
+/*   Updated: 2023/12/30 10:40:19 by vda-conc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,27 +50,27 @@ void	ft_execute_instruction(char *instruction, t_list **list_a,
 		t_list **list_b)
 {
 	if (ft_strncmp(instruction, "sa", 2) == 0)
-		ft_swap_a(list_a, 1);
+		ft_swap_a(list_a, 1, NULL);
 	else if (ft_strncmp(instruction, "sb", 2) == 0)
-		ft_swap_b(list_b, 1);
+		ft_swap_b(list_b, 1, NULL);
 	else if (ft_strncmp(instruction, "ss", 2) == 0)
-		ft_swap_ss(list_a, list_b, 1);
+		ft_swap_ss(list_a, list_b, 1, NULL);
 	else if (ft_strncmp(instruction, "pa", 2) == 0)
-		ft_swap_pa(list_a, list_b, 1);
+		ft_swap_pa(list_a, list_b, 1, NULL);
 	else if (ft_strncmp(instruction, "pb", 2) == 0)
-		ft_swap_pb(list_a, list_b, 1);
+		ft_swap_pb(list_a, list_b, 1, NULL);
 	else if (ft_strncmp(instruction, "ra", 2) == 0)
-		ft_swap_ra(list_a, 0, 1);
+		ft_swap_ra(list_a, 0, 1, NULL);
 	else if (ft_strncmp(instruction, "rb", 2) == 0)
-		ft_swap_rb(list_b, 0, 1);
+		ft_swap_rb(list_b, 0, 1, NULL);
 	else if (ft_strncmp(instruction, "rra", 3) == 0)
-		ft_swap_rra(list_a, 0, 1);
+		ft_swap_rra(list_a, 0, 1, NULL);
 	else if (ft_strncmp(instruction, "rrb", 3) == 0)
-		ft_swap_rrb(list_b, 0, 1);
+		ft_swap_rrb(list_b, 0, 1, NULL);
 	else if (ft_strncmp(instruction, "rrr", 3) == 0)
-		ft_swap_rrr(list_a, list_b, 1);
+		ft_swap_rrr(list_a, list_b, 1, NULL);
 	else if (ft_strncmp(instruction, "rr", 2) == 0)
-		ft_swap_rr(list_a, list_b, 1);
+		ft_swap_rr(list_a, list_b, 1, NULL);
 }
 
 int	ft_apply_instructions(t_list **list_a, char **instructions)
