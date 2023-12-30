@@ -6,7 +6,7 @@
 /*   By: vda-conc <vda-conc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/07 08:40:29 by vda-conc          #+#    #+#             */
-/*   Updated: 2023/12/30 18:53:07 by vda-conc         ###   ########.fr       */
+/*   Updated: 2023/12/30 19:22:29 by vda-conc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -171,11 +171,8 @@ char *ft_push_swap(t_list **list_a, int iteration)
 	group = ft_highest_group(list_a);
 	list_b = NULL;
   i = 0;
-  while (i < iteration)
-  {
+  while (i++ < iteration)
     ft_swap_ra(list_a, 0, 0, &instructions);
-    i++;
-  }
 	ft_push_to_b(list_a, &list_b, total_size, group, &instructions);
 	ft_three_sort_a(list_a, &instructions);
 	while (ft_lstsize(list_b) > 0)
