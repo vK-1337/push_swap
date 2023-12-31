@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   index.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vda-conc <vda-conc@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vk <vk@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/22 12:38:45 by vda-conc          #+#    #+#             */
-/*   Updated: 2023/12/29 19:05:30 by vda-conc         ###   ########.fr       */
+/*   Updated: 2023/12/31 16:53:48 by vk               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ t_list	*ft_get_next_min(t_list **list, t_list *previous_min_node)
 
 	first_min = ft_get_first_min(list, previous_min_node);
 	curr = *list;
-	while (curr->next != NULL)
+	while (curr)
 	{
 		if (first_min >= curr->content
 			&& curr->content > previous_min_node->content)
@@ -29,12 +29,6 @@ t_list	*ft_get_next_min(t_list **list, t_list *previous_min_node)
 			first_min = next_min->content;
 		}
 		curr = curr->next;
-	}
-	if (first_min >= curr->content
-		&& curr->content > previous_min_node->content)
-	{
-		next_min = curr;
-		first_min = next_min->content;
 	}
 	return (next_min);
 }
@@ -46,7 +40,7 @@ int	ft_get_first_min(t_list **list, t_list *previous_min_node)
 
 	first_min = 0;
 	curr = *list;
-	while (curr->next != NULL)
+	while (curr)
 	{
 		if (curr->content > previous_min_node->content)
 		{
@@ -54,9 +48,7 @@ int	ft_get_first_min(t_list **list, t_list *previous_min_node)
 			break ;
 		}
 		curr = curr->next;
-	}
-	if (curr->content > previous_min_node->content)
-		first_min = curr->content;
+  }
 	return (first_min);
 }
 

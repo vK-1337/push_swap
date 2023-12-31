@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vda-conc <vda-conc@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vk <vk@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/07 08:40:29 by vda-conc          #+#    #+#             */
-/*   Updated: 2023/12/30 19:22:29 by vda-conc         ###   ########.fr       */
+/*   Updated: 2023/12/31 16:51:56 by vk               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -196,14 +196,14 @@ char *ft_brute_force(t_list *list_a)
   int best_instructions_score;
   char *curr_iteration_instructions;
   int curr_iteration_score;
-  int total_size;
 
   iteration = 0;
-  total_size = ft_lstsize(list_a);
   list_copy = ft_copy_list(list_a);
+  if (!list_copy)
+    return (NULL);
   best_instructions = ft_push_swap(&list_copy, iteration);
   best_instructions_score = ft_count_instructions(best_instructions);
-  while (++iteration < 100)
+  while (++iteration < 40)
   {
     list_copy = ft_copy_list(list_a);
     curr_iteration_instructions = ft_push_swap(&list_copy, iteration);
@@ -260,6 +260,8 @@ int ft_count_instructions(char *instructions)
   int i;
 
   final_tab = ft_split(instructions, '\n');
+  if (!final_tab)
+    return (-1);
   i = 0;
   while (final_tab[i])
     i++;
@@ -309,11 +311,19 @@ int	main(int ac, char **av)
 	if (!ft_parse(ac, av))
 		return (write(2, "Error\n", 6), 0);
 	if (ac > 2)
+  {
 		list_a = ft_make_list(ac, av);
+    if (!list_a)
+      exit (0);
+  }
 	else
 	{
 		list = ft_split(av[1], ' ');
+    if(!list)
+      exit(0);
 		list_a = ft_make_list(ac, list);
+    if (!list_a)
+      exit (0);
 		ft_free_memory(list);
 	}
 	if (ft_already_sorted(&list_a))
@@ -322,6 +332,8 @@ int	main(int ac, char **av)
 	{
 		ft_index_list(&list_a);
 		best_instructions = ft_brute_force(list_a);
+    if (best_instructions == NULL)
+      return (ft_free_list(&list_a), 0);
 	}
   printf("%s", best_instructions);
 	return (ft_free_list(&list_a), 0);

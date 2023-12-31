@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   lst_utils.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vda-conc <vda-conc@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vk <vk@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 09:48:49 by vda-conc          #+#    #+#             */
-/*   Updated: 2023/12/30 15:54:03 by vda-conc         ###   ########.fr       */
+/*   Updated: 2023/12/30 23:43:36 by vk               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-void	ft_swap_pa(t_list **list_a, t_list **list_b, int is_checker,char **instructions)
+void	ft_swap_pa(t_list **list_a, t_list **list_b, int is_checker, char **instructions)
 {
 	t_list	*tmp;
 
@@ -41,7 +41,7 @@ void	ft_swap_ra(t_list **list_a, int is_rr, int is_checker, char **instructions)
 		ft_write_instruction("ra\n", instructions);
 }
 
-void	ft_swap_rb(t_list **list_b, int is_rr, int is_checker,char **instructions)
+void	ft_swap_rb(t_list **list_b, int is_rr, int is_checker, char **instructions)
 {
 	t_list	*tmp;
 
@@ -55,7 +55,7 @@ void	ft_swap_rb(t_list **list_b, int is_rr, int is_checker,char **instructions)
 		ft_write_instruction("rb\n", instructions);
 }
 
-void	ft_swap_rr(t_list **list_a, t_list **list_b, int is_checker,char **instructions)
+void	ft_swap_rr(t_list **list_a, t_list **list_b, int is_checker, char **instructions)
 {
 	if (!*list_a || !*list_b)
 		return ;

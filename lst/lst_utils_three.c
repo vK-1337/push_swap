@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lst_utils_three.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vda-conc <vda-conc@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vk <vk@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/15 19:01:38 by vda-conc          #+#    #+#             */
-/*   Updated: 2023/12/30 13:27:05 by vda-conc         ###   ########.fr       */
+/*   Updated: 2023/12/30 23:50:42 by vk               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,8 @@ t_list	*ft_make_list(int ac, char **av)
 	while (av[i])
 	{
 		new_node = ft_lstnew(ft_atol(av[i]));
+    if (!new_node)
+      return (NULL);
 		ft_lstadd_back(&list, new_node);
 		i++;
 	}

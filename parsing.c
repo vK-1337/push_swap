@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vda-conc <vda-conc@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vk <vk@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/15 14:58:13 by vda-conc          #+#    #+#             */
-/*   Updated: 2023/12/27 13:34:45 by vda-conc         ###   ########.fr       */
+/*   Updated: 2023/12/31 16:44:06 by vk               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,16 +38,14 @@ int	ft_check_single_arg(char *str)
 	if (!ft_check_validity(str))
 		return (0);
 	tab = ft_split(str, ' ');
+  if (!tab)
+    return (-1);
 	i = 0;
 	while (tab[i])
 	{
 		nbr = ft_atol(tab[i]);
-		if (nbr > 2147483647 || nbr < -2147483648)
-		{
-			ft_free_memory(tab);
-			return (0);
-		}
-		i++;
+		if (nbr > 2147483647 || nbr < -2147483648 || ft_itoa(nbr) != tab[i++])
+			return (ft_free_memory(tab), 0);
 	}
 	if (ft_is_same(i, tab, 0))
 	{
@@ -107,7 +105,7 @@ int	ft_parse(int ac, char **av)
 {
 	if (ac == 2)
 	{
-		if (!ft_check_single_arg(av[1]))
+		if (!ft_check_single_arg(av[1]) || ft_check_single_arg(av[1]) == -1)
 			return (0);
 	}
 	else
