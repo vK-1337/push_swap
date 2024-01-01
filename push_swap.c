@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vda-conc <vda-conc@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vk <vk@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/07 08:40:29 by vda-conc          #+#    #+#             */
-/*   Updated: 2024/01/01 19:52:03 by vda-conc         ###   ########.fr       */
+/*   Updated: 2024/01/01 21:54:13 by vk               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,30 +57,28 @@ void	ft_pb_by_three_groups(t_list **list_a, t_list **list_b, int total_size,
 	multiplier++;
 }
 
-char	*ft_push_swap(t_list **list_a, int iteration)
+char	*ft_push_swap(t_lists_container *lists, int iteration)
 {
-	t_list	*list_b;
-	t_list	*node_to_push;
-	t_list	*target_node;
-	int		total_size;
-	char	*instrucs;
+    t_list	*node_to_push;
+    t_list	*target_node;
+    int		total_size;
+    char	*instrucs;
 
-	instrucs = NULL;
-	total_size = ft_lstsize(*list_a);
-	list_b = NULL;
-	while (--iteration > 0)
-		ft_swap_ra(list_a, 0, 0, &instrucs);
-	ft_push_to_b(list_a, &list_b, total_size, &instrucs);
-	ft_three_sort_a(list_a, &instrucs);
-	while (ft_lstsize(list_b) > 0)
-	{
-		node_to_push = ft_best_push_pa(&list_b, list_a,
-				ft_highest_group(&list_b));
-		target_node = ft_get_node(list_a, ft_define_target_pos_pa(node_to_push,
-					list_a));
-		ft_push_to_a(node_to_push, target_node, list_a, &list_b, &instrucs);
-	}
-	return (ft_final_sort(list_a, &instrucs), ft_free_list(&list_b), instrucs);
+    instrucs = NULL;
+    total_size = ft_lstsize(lists->list_a);
+    while (--iteration > 0)
+        ft_swap_ra(&lists->list_a, 0, 0, &instrucs);
+    ft_push_to_b(&lists->list_a, &lists->list_b, total_size, &instrucs);
+    ft_three_sort_a(&lists->list_a, &instrucs);
+    while (ft_lstsize(lists->list_b) > 0)
+    {
+        node_to_push = ft_best_push_pa(&lists->list_b, &lists->list_a,
+                ft_highest_group(&lists->list_b));
+        target_node = ft_get_node(&lists->list_a, ft_define_target_pos_pa(node_to_push,
+                    &lists->list_a));
+        ft_push_to_a(node_to_push, target_node, lists, &instrucs);
+    }
+    return (ft_final_sort(&lists->list_a, &instrucs), ft_free_list(&lists->list_b), instrucs);
 }
 
 int	main(int ac, char **av)
