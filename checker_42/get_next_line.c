@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vk <vk@student.42.fr>                      +#+  +:+       +#+        */
+/*   By: vda-conc <vda-conc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/27 18:19:03 by vda-conc          #+#    #+#             */
-/*   Updated: 2023/12/31 17:07:42 by vk               ###   ########.fr       */
+/*   Updated: 2024/01/01 12:31:21 by vda-conc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,8 +120,7 @@ int	get_next_line(int fd, char **line, int error)
 	else if (line_index == -1 && (ft_gnl_strlen(stash) > 0))
 		line_index = ft_gnl_strlen(stash) - 1;
 	*line = ft_fill_line(&stash, line_index);
-  if (*line == NULL)
-    return (-1);
-	ft_clean_stash(&stash, line_index);
-	return (1);
+	if (*line == NULL)
+		return (-1);
+	return (ft_clean_stash(&stash, line_index), 1);
 }

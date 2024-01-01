@@ -6,7 +6,7 @@
 /*   By: vda-conc <vda-conc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/15 23:48:09 by vda-conc          #+#    #+#             */
-/*   Updated: 2023/12/30 10:45:21 by vda-conc         ###   ########.fr       */
+/*   Updated: 2024/01/01 17:28:07 by vda-conc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ int	ft_find_lst_max_pos(t_list **list)
 	max_position = 1;
 	curr = *list;
 	max = curr->content;
-	while (curr->next != NULL)
+	while (curr)
 	{
 		if (curr->content > max)
 		{
@@ -48,8 +48,6 @@ int	ft_find_lst_max_pos(t_list **list)
 		curr = curr->next;
 		i++;
 	}
-	if (curr->content > max)
-		max_position = i;
 	return (max_position);
 }
 
@@ -78,14 +76,34 @@ int	ft_find_lst_min_pos(t_list **list)
 		min_position = i;
 	return (min_position);
 }
-void ft_write_instruction(char *str, char **instructions) {
-    if (!instructions) {
-        return;
-    }
-    if (*instructions == NULL) {
-        *instructions = ft_strdup(str);
-    } else {
-        char *temp = ft_strjoin(*instructions, str);
-        *instructions = temp;
-    }
+
+void	ft_write_instruction(char *str, char **instructions)
+{
+	char	*temp;
+
+	if (!instructions)
+		return ;
+	if (*instructions == NULL)
+		*instructions = ft_strdup(str);
+	else
+	{
+		temp = ft_strjoin(*instructions, str);
+		*instructions = temp;
+	}
+}
+
+int	ft_highest_group(t_list **list_b)
+{
+	t_list	*curr;
+	int		highest_group;
+
+	curr = *list_b;
+	highest_group = 1;
+	while (curr)
+	{
+		if (curr->group > highest_group)
+			highest_group = curr->group;
+		curr = curr->next;
+	}
+	return (highest_group);
 }

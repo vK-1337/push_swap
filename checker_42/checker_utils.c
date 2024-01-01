@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   checker_utils.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vk <vk@student.42.fr>                      +#+  +:+       +#+        */
+/*   By: vda-conc <vda-conc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/27 09:49:12 by vda-conc          #+#    #+#             */
-/*   Updated: 2023/12/30 23:53:53 by vk               ###   ########.fr       */
+/*   Updated: 2024/01/01 12:26:43 by vda-conc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,8 @@ void	ft_get_and_apply_instructions(t_list **list_a)
 		return ;
 	}
 	moves = ft_split(instructions, '\n');
-  if (!moves)
-    return;
+	if (!moves)
+		return ;
 	ft_apply_instructions(list_a, moves);
 	free(instructions);
 	ft_free_memory(moves);

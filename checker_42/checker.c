@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   checker.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vk <vk@student.42.fr>                      +#+  +:+       +#+        */
+/*   By: vda-conc <vda-conc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/26 14:07:30 by vda-conc          #+#    #+#             */
-/*   Updated: 2023/12/31 16:56:11 by vk               ###   ########.fr       */
+/*   Updated: 2024/01/01 12:32:38 by vda-conc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,8 @@ int	ft_get_instructions(char **instructions, t_list **list_a)
 			return (0);
 		}
 		*instructions = ft_strjoin(*instructions, buffer);
-    if (*instructions == NULL)
-      return (0);
+		if (*instructions == NULL)
+			return (0);
 	}
 	return (1);
 }
@@ -105,19 +105,15 @@ int	main(int ac, char **av)
 	else
 	{
 		list = ft_split(av[1], ' ');
-    if (!list)
-      exit(0);
+		if (!list)
+			exit(0);
 		list_a = ft_make_list(ac, list);
-    if (!list_a)
-      exit(0);
+		if (!list_a)
+			exit(0);
 		ft_free_memory(list);
 	}
 	if (ft_already_sorted(&list_a))
-	{
-		ft_free_list(&list_a);
-		write(1, "OK\n", 3);
-		return (0);
-	}
+		return (ft_free_list(&list_a), write(1, "OK\n", 3), 0);
 	ft_get_and_apply_instructions(&list_a);
 	ft_free_list(&list_a);
 	return (0);

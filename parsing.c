@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vk <vk@student.42.fr>                      +#+  +:+       +#+        */
+/*   By: vda-conc <vda-conc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/15 14:58:13 by vda-conc          #+#    #+#             */
-/*   Updated: 2023/12/31 16:44:06 by vk               ###   ########.fr       */
+/*   Updated: 2024/01/01 12:24:56 by vda-conc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,8 @@ int	ft_check_single_arg(char *str)
 	if (!ft_check_validity(str))
 		return (0);
 	tab = ft_split(str, ' ');
-  if (!tab)
-    return (-1);
+	if (!tab)
+		return (-1);
 	i = 0;
 	while (tab[i])
 	{

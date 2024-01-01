@@ -6,7 +6,7 @@
 /*   By: vda-conc <vda-conc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/15 18:59:43 by vda-conc          #+#    #+#             */
-/*   Updated: 2023/12/30 13:26:57 by vda-conc         ###   ########.fr       */
+/*   Updated: 2024/01/01 12:27:33 by vda-conc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,9 +40,9 @@ void	ft_swap_a(t_list **list, int is_checker, char **instructions)
 	*list = (*list)->prev;
 	ft_refresh_pos(list);
 	if (!is_checker)
-  {
+	{
 		ft_write_instruction("sa\n", instructions);
-  }
+	}
 }
 
 void	ft_swap_b(t_list **list, int is_checker, char **instructions)
@@ -54,12 +54,13 @@ void	ft_swap_b(t_list **list, int is_checker, char **instructions)
 	*list = (*list)->prev;
 	ft_refresh_pos(list);
 	if (!is_checker)
-  {
+	{
 		ft_write_instruction("sb\n", instructions);
-  }
+	}
 }
 
-void	ft_swap_ss(t_list **list_a, t_list **list_b, int is_checker, char **instructions)
+void	ft_swap_ss(t_list **list_a, t_list **list_b, int is_checker,
+		char **instructions)
 {
 	if (!*list_a || !*list_b)
 		return ;
@@ -68,12 +69,13 @@ void	ft_swap_ss(t_list **list_a, t_list **list_b, int is_checker, char **instruc
 	ft_refresh_pos(list_a);
 	ft_refresh_pos(list_b);
 	if (!is_checker)
-  {
+	{
 		ft_write_instruction("ss\n", instructions);
-  }
+	}
 }
 
-void	ft_swap_pb(t_list **list_a, t_list **list_b, int is_checker, char **instructions)
+void	ft_swap_pb(t_list **list_a, t_list **list_b, int is_checker,
+		char **instructions)
 {
 	t_list	*tmp;
 
@@ -85,7 +87,7 @@ void	ft_swap_pb(t_list **list_a, t_list **list_b, int is_checker, char **instruc
 	ft_refresh_pos(list_a);
 	ft_refresh_pos(list_b);
 	if (!is_checker)
-  {
-    ft_write_instruction("pb\n", instructions);
-  }
+	{
+		ft_write_instruction("pb\n", instructions);
+	}
 }
