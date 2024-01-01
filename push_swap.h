@@ -6,7 +6,7 @@
 /*   By: vk <vk@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/07 08:40:32 by vda-conc          #+#    #+#             */
-/*   Updated: 2024/01/01 22:07:48 by vk               ###   ########.fr       */
+/*   Updated: 2024/01/01 22:27:57 by vk               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,14 +23,14 @@ typedef struct s_costs_info
 	int	target_list_size;
 }		t_costs_info;
 
-typedef struct s_lists_container
+typedef struct s_list_container
 {
-  t_list	*list_a;
-  t_list	*list_b;
-}		t_lists_container;
+	t_list	*list_a;
+	t_list	*list_b;
+}		t_list_container;
 
 // MAIN FUNCTION //
-char	*ft_push_swap(t_lists_container *lists, int iteration);
+char	*ft_push_swap(t_list_container *lists, int iteration);
 
 // BRUTE FORCE //
 char	*ft_brute_force(t_list *list_ai, int iteration);
@@ -91,17 +91,17 @@ int		multiple_rotates_up_greater(int *position1, int *position2, int *cost);
 
 // MOVES //
 void	ft_multiple_moves_node_greater(t_list **node, t_list **target_node,
-			t_lists_container *lists, char **instructions);
+			t_list_container *lists, char **instructions);
 void	ft_multiple_moves_node_lesser(t_list **node, t_list **target_node,
-			t_lists_container *lists, char **instructions);
+			t_list_container *lists, char **instructions);
 void	ft_single_move_node_lesser(t_list **node, t_list **target_node,
-			t_lists_container *lists, char **instructions);
+			t_list_container *lists, char **instructions);
 void	ft_single_move_node_greater(t_list **node, t_list **target_node,
-			t_lists_container *lists, char **instructions);
+			t_list_container *lists, char **instructions);
 void	ft_push_to_b(t_list **list_a, t_list **list_b, int total_size,
 			char **instructions);
-void	ft_push_to_a(t_list *node, t_list *target_node, t_lists_container *lists, char **instructions);
-
+void	ft_push_to_a(t_list *node, t_list *target_node, t_list_container *lists,
+			char **instructions);
 void	ft_pb_by_three_groups(t_list **list_a, t_list **list_b, int total_size,
 			char **instructions);
 void	ft_push_by_group(t_list **list_a, t_list **list_b, char **instructions);

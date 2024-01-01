@@ -6,34 +6,36 @@
 /*   By: vk <vk@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/01 14:04:45 by vda-conc          #+#    #+#             */
-/*   Updated: 2024/01/01 22:09:18 by vk               ###   ########.fr       */
+/*   Updated: 2024/01/01 22:33:58 by vk               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	ft_push_to_a(t_list *node, t_list *target_node, t_lists_container *lists, char **instructions)
+void	ft_push_to_a(t_list *node, t_list *target_node, t_list_container *lists,
+				char **instructions)
 {
-    t_list	*list_min;
-    t_list	*list_max;
-    int		target_is_min;
+	t_list	*list_min;
+	t_list	*list_max;
+	int		target_is_min;
 
-    list_min = ft_get_node(&lists->list_a, ft_find_lst_min_pos(&lists->list_a));
-    list_max = ft_get_node(&lists->list_a, ft_find_lst_max_pos(&lists->list_a));
-    target_is_min = 0;
-    if (node->content > list_max->content || node->content < list_min->content)
-        target_is_min = 1;
-    if (node->content < target_node->content || target_is_min == 1)
-    {
-        ft_multiple_moves_node_lesser(&node, &target_node, lists, instructions);
-        ft_single_move_node_lesser(&node, &target_node, lists, instructions);
-    }
-    else
-    {
-        ft_multiple_moves_node_greater(&node, &target_node, lists, instructions);
-        ft_single_move_node_greater(&node, &target_node, lists, instructions);
-    }
-    ft_swap_pa(&lists->list_a, &lists->list_b, 0, instructions);
+	list_min = ft_get_node(&lists->list_a, ft_find_lst_min_pos(&lists->list_a));
+	list_max = ft_get_node(&lists->list_a, ft_find_lst_max_pos(&lists->list_a));
+	target_is_min = 0;
+	if (node->content > list_max->content || node->content < list_min->content)
+		target_is_min = 1;
+	if (node->content < target_node->content || target_is_min == 1)
+	{
+		ft_multiple_moves_node_lesser(&node, &target_node, lists, instructions);
+		ft_single_move_node_lesser(&node, &target_node, lists, instructions);
+	}
+	else
+	{
+		ft_multiple_moves_node_greater(&node, &target_node, lists,
+			instructions);
+		ft_single_move_node_greater(&node, &target_node, lists, instructions);
+	}
+	ft_swap_pa(&lists->list_a, &lists->list_b, 0, instructions);
 }
 
 void	ft_push_to_b(t_list **list_a, t_list **list_b, int total_size,
