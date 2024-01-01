@@ -6,7 +6,7 @@
 /*   By: vk <vk@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/07 08:40:32 by vda-conc          #+#    #+#             */
-/*   Updated: 2024/01/01 22:01:51 by vk               ###   ########.fr       */
+/*   Updated: 2024/01/01 22:07:48 by vk               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,13 +91,13 @@ int		multiple_rotates_up_greater(int *position1, int *position2, int *cost);
 
 // MOVES //
 void	ft_multiple_moves_node_greater(t_list **node, t_list **target_node,
-			t_list **list_a, t_list **list_b, char **instructions);
+			t_lists_container *lists, char **instructions);
 void	ft_multiple_moves_node_lesser(t_list **node, t_list **target_node,
-			t_list **list_a, t_list **list_b, char **instructions);
+			t_lists_container *lists, char **instructions);
 void	ft_single_move_node_lesser(t_list **node, t_list **target_node,
-			t_list **list_a, t_list **list_b, char **instructions);
+			t_lists_container *lists, char **instructions);
 void	ft_single_move_node_greater(t_list **node, t_list **target_node,
-			t_list **list_a, t_list **list_b, char **instructions);
+			t_lists_container *lists, char **instructions);
 void	ft_push_to_b(t_list **list_a, t_list **list_b, int total_size,
 			char **instructions);
 void	ft_push_to_a(t_list *node, t_list *target_node, t_lists_container *lists, char **instructions);
