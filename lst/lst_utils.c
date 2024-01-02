@@ -6,7 +6,7 @@
 /*   By: vda-conc <vda-conc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 09:48:49 by vda-conc          #+#    #+#             */
-/*   Updated: 2024/01/01 12:33:33 by vda-conc         ###   ########.fr       */
+/*   Updated: 2024/01/02 09:51:12 by vda-conc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,4 +69,9 @@ void	ft_swap_rr(t_list **list_a, t_list **list_b, int is_checker,
 	ft_refresh_pos(list_b);
 	if (!is_checker)
 		ft_write_instruction("rr\n", instructions);
+}
+
+void	ft_write_instruction_output(char *str)
+{
+	ft_putstr_fd(str, 1);
 }
