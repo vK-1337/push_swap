@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vk <vk@student.42.fr>                      +#+  +:+       +#+        */
+/*   By: vda-conc <vda-conc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/07 08:40:29 by vda-conc          #+#    #+#             */
-/*   Updated: 2024/01/01 22:42:46 by vk               ###   ########.fr       */
+/*   Updated: 2024/01/02 09:03:45 by vda-conc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,20 +91,9 @@ int	main(int ac, char **av)
 		return (0);
 	if (!ft_parse(ac, av))
 		return (write(2, "Error\n", 6), 0);
-	// Virer de la
-	if (ac > 2)
-	{
-		list_a = ft_make_list(ac, av);
-		if (!list_a)
-			exit(0);
-	}
-	else
-	{
-		list_a = ft_make_list(ac, ft_split(av[1], ' '));
-		if (!list_a)
-			return (0);
-	}
-	// a la
+	list_a = ft_build_list(ac, av);
+	if (!list_a)
+		return (0);
 	if (ft_already_sorted(&list_a))
 		return (ft_free_list(&list_a), 0);
 	else
@@ -116,4 +105,23 @@ int	main(int ac, char **av)
 	}
 	printf("%s", best_instructions);
 	return (ft_free_list(&list_a), free(best_instructions), 0);
+}
+
+t_list	*ft_build_list(int ac, char **av)
+{
+	t_list	*list_a;
+
+	if (ac > 2)
+	{
+		list_a = ft_make_list(ac, av);
+		if (!list_a)
+			return (NULL);
+	}
+	else
+	{
+		list_a = ft_make_list(ac, ft_split(av[1], ' '));
+		if (!list_a)
+			return (NULL);
+	}
+	return (list_a);
 }
